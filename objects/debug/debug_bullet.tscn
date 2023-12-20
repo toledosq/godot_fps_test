@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d36jxeio48y3h"]
+
+[ext_resource type="Texture2D" uid="uid://g3atvjmmgpie" path="res://assets/prototype/crosshair086.png" id="1_u6b64"]
+[ext_resource type="Script" path="res://DebugBullet.gd" id="2_2h8lo"]
+
+[node name="DebugBullet" type="Sprite3D"]
+modulate = Color(1, 0, 0, 1)
+billboard = 2
+texture_filter = 1
+texture = ExtResource("1_u6b64")
+region_rect = Rect2(512, 256, 256, 128)
+script = ExtResource("2_2h8lo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

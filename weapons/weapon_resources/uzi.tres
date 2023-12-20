@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=6 format=3 uid="uid://b5mmthrq4n4n7"]
+
+[ext_resource type="PackedScene" uid="uid://4ee0oj5muhwm" path="res://weapons/projectiles/projectile.tscn" id="1_u8vg1"]
+[ext_resource type="Curve" uid="uid://763d20qh4fo6" path="res://weapons/curves/recoil_curve.tres" id="2_fwkdd"]
+[ext_resource type="Script" path="res://weapons/weapon_resources/weapon_resource.gd" id="3_ijded"]
+[ext_resource type="PackedScene" uid="uid://rt22jpwy2vrt" path="res://weapons/weapon_scenes/uzi_player_model.tscn" id="4_1370l"]
+[ext_resource type="PackedScene" uid="uid://b3kf6wwm26ab5" path="res://weapons/weapon_scenes/uzi_world_model.tscn" id="5_iuua3"]
+
+[resource]
+script = ExtResource("3_ijded")
+weapon_name = "UZI"
+weapon_range = 2000
+weapon_damage = 1
+rate_of_fire = 900
+projectile_velocity = 150
+weapon_player_model = ExtResource("4_1370l")
+weapon_world_model = ExtResource("5_iuua3")
+projectile_scene = ExtResource("1_u8vg1")
+ammo_type = 0
+magazine_size = 30
+current_ammo_amount = 30
+fire_animation = ""
+reload_animation_partial = "reload"
+reload_animation_full = "reload"
+equip_animation = "equip"
+unequip_animation = "equip"
+walk_animation = ""
+sprint_animation = ""
+idle_animation = ""
+reverse_equip_anim_for_unequip = true
+dynamic_recoil = true
+recoil_rotation_x = ExtResource("2_fwkdd")
+recoil_rotation_y = ExtResource("2_fwkdd")
+recoil_rotation_z = ExtResource("2_fwkdd")
+recoil_position_z = ExtResource("2_fwkdd")
+recoil_amplitude = Vector3(1, 1, 1)
+lerp_speed = 1.0

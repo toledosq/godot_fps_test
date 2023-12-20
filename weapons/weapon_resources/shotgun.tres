@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=5 format=3 uid="uid://dq3hwu435x358"]
+
+[ext_resource type="Script" path="res://weapons/weapon_resources/weapon_resource.gd" id="1_7pwad"]
+[ext_resource type="PackedScene" uid="uid://4ee0oj5muhwm" path="res://weapons/projectiles/projectile.tscn" id="1_b282h"]
+[ext_resource type="PackedScene" uid="uid://daq2jlevv71vm" path="res://weapons/weapon_scenes/shotgun_player_model.tscn" id="2_a67os"]
+[ext_resource type="PackedScene" uid="uid://cew783wh26t6g" path="res://weapons/weapon_scenes/shotgun_world_model.tscn" id="4_h0wo5"]
+
+[resource]
+script = ExtResource("1_7pwad")
+weapon_name = "shotgun"
+weapon_range = 2000
+weapon_damage = 5
+rate_of_fire = 60
+projectile_velocity = 80
+weapon_player_model = ExtResource("2_a67os")
+weapon_world_model = ExtResource("4_h0wo5")
+projectile_scene = ExtResource("1_b282h")
+ammo_type = 1
+magazine_size = 5
+current_ammo_amount = 5
+fire_animation = "fire"
+reload_animation_partial = "reload"
+reload_animation_full = "reload"
+equip_animation = "equip"
+unequip_animation = ""
+walk_animation = ""
+sprint_animation = ""
+idle_animation = ""
+reverse_equip_anim_for_unequip = true
+dynamic_recoil = false
+recoil_amplitude = Vector3(1, 1, 1)
+lerp_speed = 1.0

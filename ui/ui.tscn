@@ -1,0 +1,238 @@
+[gd_scene load_steps=10 format=3 uid="uid://bb61jvff2a6lg"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_glykk"]
+[ext_resource type="Texture2D" uid="uid://bph821uffcsx7" path="res://icon.svg" id="2_41l6c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jl07"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5qg2"]
+bg_color = Color(0, 0.513726, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l3cp"]
+bg_color = Color(0.301961, 0, 0.0117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkk35"]
+bg_color = Color(0.317647, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_w6qmv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AlertTextLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AlertTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hoaya"]
+resource_name = "display_alert_text"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AlertTextLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AlertTextLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jeclx"]
+_data = {
+"RESET": SubResource("Animation_w6qmv"),
+"display_alert_text": SubResource("Animation_hoaya")
+}
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_glykk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="BottomRightHBox" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="WeaponInfoPanelContainer" type="PanelContainer" parent="MarginContainer/BottomRightHBox"]
+custom_minimum_size = Vector2(300, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="WeaponInfoHBox" type="HBoxContainer" parent="MarginContainer/BottomRightHBox/WeaponInfoPanelContainer"]
+custom_minimum_size = Vector2(300, 128)
+layout_mode = 2
+alignment = 2
+
+[node name="WeaponNameLabel" type="Label" parent="MarginContainer/BottomRightHBox/WeaponInfoPanelContainer/WeaponInfoHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No weapon equipped"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmmoVBox" type="VBoxContainer" parent="MarginContainer/BottomRightHBox/WeaponInfoPanelContainer/WeaponInfoHBox"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+alignment = 1
+
+[node name="AmmoCounterLabel" type="Label" parent="MarginContainer/BottomRightHBox/WeaponInfoPanelContainer/WeaponInfoHBox/AmmoVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 43
+text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmmoReserveCounterLabel" type="Label" parent="MarginContainer/BottomRightHBox/WeaponInfoPanelContainer/WeaponInfoHBox/AmmoVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 43
+horizontal_alignment = 1
+
+[node name="GrenadeInfoContainer" type="PanelContainer" parent="MarginContainer/BottomRightHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BottomRightHBox/GrenadeInfoContainer"]
+layout_mode = 2
+
+[node name="GrenadeCounterLabel" type="Label" parent="MarginContainer/BottomRightHBox/GrenadeInfoContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 43
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GrenadeIconTexture" type="TextureRect" parent="MarginContainer/BottomRightHBox/GrenadeInfoContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_41l6c")
+expand_mode = 4
+
+[node name="GrenadeHotkeyLabel" type="Label" parent="MarginContainer/BottomRightHBox/GrenadeInfoContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "G"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomLeftVBox" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="ArmorPanelContainer" type="PanelContainer" parent="MarginContainer/BottomLeftVBox"]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 2
+
+[node name="ProgressBar2" type="ProgressBar" parent="MarginContainer/BottomLeftVBox/ArmorPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_8jl07")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w5qg2")
+value = 30.0
+
+[node name="HealthPanelContainer" type="PanelContainer" parent="MarginContainer/BottomLeftVBox"]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BottomLeftVBox/HealthPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_2l3cp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fkk35")
+value = 70.0
+
+[node name="MiniMapContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="CompassContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HScrollBar" type="HScrollBar" parent="MarginContainer/CompassContainer"]
+custom_minimum_size = Vector2(800, 64)
+layout_mode = 2
+mouse_filter = 2
+max_value = 360.0
+value = 180.0
+
+[node name="AlertTextLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 50.0
+offset_right = 20.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jeclx")
+}

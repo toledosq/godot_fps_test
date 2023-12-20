@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://bossktnjsp08j"]
+
+[ext_resource type="Script" path="res://game_manager.gd" id="1_li3bs"]
+[ext_resource type="PackedScene" uid="uid://cs4drhmc1bql5" path="res://test_world.tscn" id="2_2q06l"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="3_tos0v"]
+[ext_resource type="PackedScene" uid="uid://bb61jvff2a6lg" path="res://ui/ui.tscn" id="4_qtol8"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_li3bs")
+current_level = ExtResource("2_2q06l")
+
+[node name="test_world" parent="." instance=ExtResource("2_2q06l")]
+
+[node name="Character" parent="." instance=ExtResource("3_tos0v")]
+
+[node name="UI" parent="." instance=ExtResource("4_qtol8")]

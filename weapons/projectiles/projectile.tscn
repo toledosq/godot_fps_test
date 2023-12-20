@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://4ee0oj5muhwm"]
+
+[ext_resource type="Script" path="res://weapons/projectiles/projectile.gd" id="1_gmqcd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbh21"]
+albedo_color = Color(0.54902, 0.435294, 0, 1)
+emission_enabled = true
+emission = Color(0.74902, 0.639216, 0, 1)
+emission_energy_multiplier = 4.0
+disable_receive_shadows = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yu5aj"]
+material = SubResource("StandardMaterial3D_lbh21")
+top_radius = 0.01
+bottom_radius = 0.02
+height = 0.4
+radial_segments = 5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ftae"]
+radius = 0.0912848
+height = 0.707667
+
+[node name="Projectile" type="RigidBody3D"]
+top_level = true
+collision_layer = 4
+collision_mask = 5
+input_ray_pickable = false
+mass = 0.1
+script = ExtResource("1_gmqcd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00523596, 4.34825e-08, 0.999986, 0.999986, -4.37108e-08, -0.00523596, 4.34825e-08, 0.999999, -4.37108e-08, 0, 0, -0.206562)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CylinderMesh_yu5aj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.00526035, -0.00326409, 0.999981, 0.999982, 0.00287974, -0.00525095, -0.00286253, 0.99999, 0.0032792, 0, 0, -0.206562)
+shape = SubResource("CapsuleShape3D_1ftae")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
