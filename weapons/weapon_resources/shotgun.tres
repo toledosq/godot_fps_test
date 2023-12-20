@@ -8,10 +8,10 @@
 [resource]
 script = ExtResource("1_7pwad")
 weapon_name = "shotgun"
-weapon_range = 2000
+weapon_range = 500
 weapon_damage = 5
 rate_of_fire = 60
-projectile_velocity = 80
+projectile_velocity = 90
 weapon_player_model = ExtResource("2_a67os")
 weapon_world_model = ExtResource("4_h0wo5")
 projectile_scene = ExtResource("1_b282h")

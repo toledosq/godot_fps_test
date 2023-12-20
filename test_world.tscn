@@ -186,4 +186,4 @@ autoplay = true
 bus = &"Background"
 
 [node name="AK74M_Player_Model" parent="." instance=ExtResource("11_j0kpo")]
-transform = Transform3D(-0.688076, 0, -0.725639, 0, 1, 0, 0.725639, 0, -0.688076, 0.535236, 1.39505, -14.4652)
+transform = Transform3D(-0.00303701, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00303701, 19.5806, 1.39505, -8.96408)

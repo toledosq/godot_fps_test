@@ -495,7 +495,7 @@ libraries = {
 }
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.869757, 0.196082, 0.140174)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.48483, 0.391852, -0.00136273)
 
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_tad0m")
