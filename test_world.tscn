@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cs4drhmc1bql5"]
+[gd_scene load_steps=24 format=3 uid="uid://cs4drhmc1bql5"]
 
 [ext_resource type="Script" path="res://test_world.gd" id="1_774bg"]
 [ext_resource type="Texture2D" uid="uid://cjaicr2d6c32x" path="res://assets/prototype/texture_01.png" id="2_6rxpf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3kf6wwm26ab5" path="res://weapons/weapon_scenes/uzi_world_model.tscn" id="8_p77q5"]
 [ext_resource type="PackedScene" uid="uid://byjgw0ik783d" path="res://objects/world/target_dummy.tscn" id="9_uuv57"]
 [ext_resource type="AudioStream" uid="uid://bpwybxodta0s" path="res://assets/sfx/030822_leaves-rustling-in-wind-79518.mp3" id="10_bg31u"]
+[ext_resource type="PackedScene" uid="uid://sah1757ioacl" path="res://weapons/weapon_scenes/ak_74m_player_model.tscn" id="11_j0kpo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yt0i4"]
 albedo_texture = ExtResource("2_6rxpf")
@@ -22,10 +23,23 @@ ground_color = Color(0.160784, 0.815686, 0.905882, 1)
 sky_material = SubResource("PhysicalSkyMaterial_edcox")
 
 [sub_resource type="Environment" id="Environment_20rw3"]
-background_mode = 2
+background_energy_multiplier = 2.0
 sky = SubResource("Sky_2iust")
-tonemap_mode = 1
+ambient_light_source = 3
+tonemap_mode = 2
+tonemap_white = 1.2
 ssao_enabled = true
+ssao_power = 3.0
+ssao_detail = 3.0
+ssao_horizon = 0.04
+ssao_ao_channel_affect = 0.5
+ssil_enabled = true
+ssil_intensity = 0.5
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 1.99
+sdfgi_energy = 0.32
+volumetric_fog_density = 0.005
+volumetric_fog_emission = Color(0.164706, 0.164706, 0.164706, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptabp"]
 albedo_texture = ExtResource("3_ok7kp")
@@ -68,10 +82,12 @@ material = SubResource("StandardMaterial3D_yt0i4")
 environment = SubResource("Environment_20rw3")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.791147, 0.0625937, 0.608414, 0.532297, 0.560402, 0.634515, -0.30124, 0.825852, -0.476679, 0, 0, 0)
+transform = Transform3D(-0.455044, -0.504043, -0.734082, -0.592425, -0.444101, 0.672167, -0.664807, 0.740753, -0.096522, 0, 0, 0)
 layers = 3
 light_energy = 4.0
+light_volumetric_fog_energy = 2.0
 shadow_enabled = true
+shadow_bias = 0.05
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0536, 3.82914, 0)
@@ -168,3 +184,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59764, 1, -21)
 stream = ExtResource("10_bg31u")
 autoplay = true
 bus = &"Background"
+
+[node name="AK74M_Player_Model" parent="." instance=ExtResource("11_j0kpo")]
+transform = Transform3D(-0.688076, 0, -0.725639, 0, 1, 0, 0.725639, 0, -0.688076, 0.535236, 1.39505, -14.4652)

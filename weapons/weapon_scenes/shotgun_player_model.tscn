@@ -499,8 +499,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8697
 
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_tad0m")
+volume_db = 10.0
 max_polyphony = 3
 
 [node name="ReloadAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jmmq0")
-volume_db = -20.0
