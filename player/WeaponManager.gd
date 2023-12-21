@@ -283,7 +283,6 @@ func fire_weapon() -> void:
 
 # TODO: VERSION 1: Node3D, does own raycasting, uses basis for direction
 func create_projectile() -> void:
-	var camera_collision = get_camera_collision(current_weapon_resource.weapon_range)
 	var projectile = current_weapon_resource.projectile_scene.instantiate()
 	current_weapon_model.muzzle_marker.add_child(projectile)
 	# Move projectile to the muzzle position
@@ -326,14 +325,14 @@ func remove_exclusion(projectile_RID: RID) -> void:
 	collision_exclusion.erase(projectile_RID)
 
 
-func get_camera_collision(range) -> Vector3:
-	var camera = get_viewport().get_camera_3d()
+func get_camera_collision(distance) -> Vector3:
+	var camera_ = get_viewport().get_camera_3d()
 	var viewport_size = get_viewport().get_size()
 	
 	# Set raycast origin to center of viewport
-	var ray_origin = camera.project_ray_origin(viewport_size/2)
-	# Set raycast end to the range specified (weapon range for hitscan, custom range for projectile)
-	var ray_end = ray_origin + camera.project_ray_normal(viewport_size/2) * range
+	var ray_origin = camera_.project_ray_origin(viewport_size/2)
+	# Set raycast end to the distance specified (weapon distance for hitscan, custom distance for projectile)
+	var ray_end = ray_origin + camera_.project_ray_normal(viewport_size/2) * distance
 	
 	var new_intersection = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
 	new_intersection.set_exclude(collision_exclusion)

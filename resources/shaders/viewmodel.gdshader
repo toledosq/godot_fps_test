@@ -8,10 +8,13 @@ uniform sampler2D texture_albedo : source_color;
 uniform float specular = 0.5f;
 uniform float metallic = 1.0f;
 uniform float roughness : hint_range(0,1) = 1.0f;
+uniform float ao : hint_range(0,2) = 1.0f;
 uniform sampler2D texture_metallic : hint_default_white;
 uniform vec4 metallic_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 uniform sampler2D texture_roughness : hint_default_white;
 uniform vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+uniform sampler2D texture_ao : hint_default_white;
+uniform vec4 ao_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 uniform sampler2D texture_normal : hint_normal;
 uniform float normal_scale : hint_range(-16,16) = 0.5f;
 uniform vec3 uv1_scale = vec3(1.0f);
@@ -41,6 +44,9 @@ void fragment() {
 	METALLIC = metallic_tex * metallic;
 	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
+	float ao_tex = dot(texture(texture_ao,base_uv),ao_texture_channel);
+	AO = ao_tex * ao;
+	
 	SPECULAR = specular;
 	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
 	

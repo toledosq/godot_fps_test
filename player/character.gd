@@ -134,7 +134,7 @@ func handle_movement(delta, input_dir) -> void:
 			velocity.z = direction.z * speed
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(PAUSE):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
