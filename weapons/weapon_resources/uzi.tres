@@ -33,5 +33,5 @@ recoil_rotation_x = ExtResource("2_fwkdd")
 recoil_rotation_y = ExtResource("2_fwkdd")
 recoil_rotation_z = ExtResource("2_fwkdd")
 recoil_position_z = ExtResource("2_fwkdd")
-recoil_amplitude = Vector3(1, 1, 1)
+recoil_amplitude = Vector3(-0.1, 1, 1)
 lerp_speed = 1.0

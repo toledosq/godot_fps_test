@@ -4,7 +4,6 @@ var damage: int = 0
 var speed: int = 0
 var prev_pos := Vector3()
 var direction : Vector3
-var total_distance : float = 0.0
 var is_hit := false
 var debug_bullet := preload("res://objects/debug/debug_bullet.tscn")
 
@@ -38,7 +37,6 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 	prev_pos = new_pos
-	total_distance += distance
 
 
 func create_hit_indicator(_position: Vector3) -> void:
@@ -46,14 +44,6 @@ func create_hit_indicator(_position: Vector3) -> void:
 	var world = get_tree().get_root().get_child(0)
 	world.add_child(hit_indicator)
 	hit_indicator.global_translate(_position)
-
-
-func _on_body_entered(body: PhysicsBody3D) -> void:
-	if body.has_method("hit"):
-		body.hit(damage)
-	if body.has_method("apply_impulse"):
-		body.apply_impulse(-transform.basis.z, transform.basis.z * speed)
-	queue_free()
 
 
 func _on_timer_timeout() -> void:

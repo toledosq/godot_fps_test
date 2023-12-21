@@ -54,6 +54,7 @@ roughness_texture_channel = 1
 normal_enabled = true
 normal_texture = ExtResource("4_w5mrq")
 ao_enabled = true
+ao_light_affect = 0.9
 ao_texture = ExtResource("3_dkicy")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_o81pi"]

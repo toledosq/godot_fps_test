@@ -58,6 +58,10 @@ MarginContainer/constants/margin_top = 10
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_0t4e8")
+base_speed = 4.0
+sprint_speed = 8.0
+crouch_speed = 3.0
+jump_velocity = 5.0
 HEAD = NodePath("Head")
 CAMERA = NodePath("Head/Camera")
 CAMERA_ANIMATION = NodePath("Head/camera_animation")
@@ -94,7 +98,7 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_o0unb")
 }
-blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"headbob", 0.5, &"headbob", &"RESET", 0.5]
+blend_times = [&"headbob", &"RESET", 0.5, &"RESET", &"headbob", 0.5, &"RESET", &"RESET", 0.5]
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3

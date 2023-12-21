@@ -45,7 +45,8 @@ void fragment() {
 	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 	float ao_tex = dot(texture(texture_ao,base_uv),ao_texture_channel);
-	AO = ao_tex * ao;
+	AO = ao_tex;
+	AO_LIGHT_AFFECT = ao_tex * ao;
 	
 	SPECULAR = specular;
 	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
