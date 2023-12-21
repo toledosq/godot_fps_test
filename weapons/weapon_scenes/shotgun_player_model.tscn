@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://weapons/weapon_resources/weapon.gd" id="1_io82o"]
 [ext_resource type="Texture2D" uid="uid://cnpoeplq4xxt" path="res://assets/weapons/shotgun/Shotgun_UE4_BaseColor.png" id="2_jpudi"]
-[ext_resource type="Shader" path="res://resources/Viewmodel Shader/viewmodel.gdshader" id="2_s4yth"]
-[ext_resource type="Script" path="res://addons/fpc/Viewmodel_Shader_Weapon_Models.gd" id="2_wqwpt"]
+[ext_resource type="Shader" path="res://resources/shaders/viewmodel.gdshader" id="2_s4yth"]
+[ext_resource type="Script" path="res://resources/shaders/viewmodel_shader_weapon_models.gd" id="2_wqwpt"]
 [ext_resource type="Texture2D" uid="uid://bmv2t8axfh4ms" path="res://assets/weapons/shotgun/Shotgun_UE4_OcclusionRoughnessMetallic.png" id="3_8605m"]
 [ext_resource type="Texture2D" uid="uid://cumj6ovbscqcg" path="res://assets/weapons/shotgun/Shotgun_UE4_Normal.png" id="4_ie1gb"]
 [ext_resource type="AudioStream" uid="uid://mbeabmexv2n3" path="res://assets/sfx/cannonball-89596.mp3" id="5_tad0m"]

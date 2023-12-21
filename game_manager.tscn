@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_li3bs"]
 [ext_resource type="PackedScene" uid="uid://cs4drhmc1bql5" path="res://test_world.tscn" id="2_2q06l"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="3_tos0v"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/character.tscn" id="3_tos0v"]
 [ext_resource type="PackedScene" uid="uid://bb61jvff2a6lg" path="res://ui/ui.tscn" id="4_qtol8"]
 
 [node name="GameManager" type="Node"]

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://test_world.gd" id="1_774bg"]
 [ext_resource type="Texture2D" uid="uid://cjaicr2d6c32x" path="res://assets/prototype/texture_01.png" id="2_6rxpf"]
+[ext_resource type="Environment" uid="uid://big1w54uuerqs" path="res://resources/environments/outdoor_environment.tres" id="3_5c8xm"]
 [ext_resource type="PackedScene" uid="uid://dkp5f87vy41m6" path="res://objects/ammo_crate.tscn" id="3_8b7kh"]
 [ext_resource type="Texture2D" uid="uid://dnkrdjh6hsg8u" path="res://assets/prototype/texture_02.png" id="3_ok7kp"]
-[ext_resource type="Environment" uid="uid://big1w54uuerqs" path="res://resources/outdoor_environment.tres" id="3_yjtue"]
 [ext_resource type="PackedScene" uid="uid://cwfm66ce03wy3" path="res://objects/world/target.tscn" id="4_eo5hs"]
 [ext_resource type="PackedScene" uid="uid://b12chmbhdv3mj" path="res://weapons/weapon_scenes/ak_74m_world_model.tscn" id="5_fnd1p"]
 [ext_resource type="PackedScene" uid="uid://cew783wh26t6g" path="res://weapons/weapon_scenes/shotgun_world_model.tscn" id="7_32gqe"]
@@ -54,7 +54,7 @@ size = Vector3(50, 1, 50)
 material = SubResource("StandardMaterial3D_yt0i4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("3_yjtue")
+environment = ExtResource("3_5c8xm")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.455044, -0.504043, -0.734082, -0.592425, -0.444101, 0.672167, -0.664807, 0.740753, -0.096522, 0, 0, 0)

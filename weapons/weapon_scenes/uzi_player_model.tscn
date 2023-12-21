@@ -1,14 +1,14 @@
 [gd_scene load_steps=32 format=3 uid="uid://rt22jpwy2vrt"]
 
 [ext_resource type="Script" path="res://weapons/weapon_resources/weapon.gd" id="1_du51j"]
-[ext_resource type="Shader" path="res://resources/Viewmodel Shader/viewmodel.gdshader" id="2_d6n6p"]
-[ext_resource type="Script" path="res://addons/fpc/Viewmodel_Shader_Weapon_Models.gd" id="2_h6gb2"]
+[ext_resource type="Script" path="res://resources/shaders/viewmodel_shader_weapon_models.gd" id="2_h6gb2"]
 [ext_resource type="AudioStream" uid="uid://55kinqnk2vj0" path="res://assets/sfx/uzi-gunshot.mp3" id="2_s5kt6"]
+[ext_resource type="Shader" path="res://resources/shaders/viewmodel.gdshader" id="3_s7bid"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udnop"]
 resource_name = "Material.004"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.119993, 0.119993, 0.119993, 1)
 shader_parameter/specular = 0.5
@@ -74,7 +74,7 @@ bind/8/pose = Transform3D(1.30536e-06, -19.8391, 4.92246e-06, 19.8391, 3.67037e-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ake3t"]
 resource_name = "Material.036"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.133327, 0.133327, 0.133327, 1)
 shader_parameter/specular = 0.5
@@ -109,7 +109,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qwv42"]
 resource_name = "Material.006"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.148649, 0.148649, 0.148649, 1)
 shader_parameter/specular = 0.5
@@ -144,7 +144,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_01bm1"]
 resource_name = "Material.005"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.0584231, 0.0584231, 0.0584231, 1)
 shader_parameter/specular = 0.5
@@ -179,7 +179,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnhc0"]
 resource_name = "Material.008"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.159993, 0.159993, 0.159993, 1)
 shader_parameter/specular = 0.5
@@ -214,7 +214,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fb1fj"]
 resource_name = "Material.003"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.10863, 0.10863, 0.10863, 1)
 shader_parameter/specular = 0.5
@@ -249,7 +249,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ev4ja"]
 resource_name = "Material.009"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.119993, 0.119993, 0.119993, 1)
 shader_parameter/specular = 0.5
@@ -284,7 +284,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pbdo1"]
 resource_name = "Material.007"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.190265, 0.182175, 0.17427, 1)
 shader_parameter/specular = 0.5
@@ -318,7 +318,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ejh70"]
 resource_name = "Material"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.479993, 0.386628, 0.290812, 1)
 shader_parameter/specular = 0.5
@@ -352,7 +352,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ym51x"]
 resource_name = "Material.002"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.38666, 0.352968, 0.318428, 1)
 shader_parameter/specular = 0.5
@@ -386,7 +386,7 @@ blend_shape_mode = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xvd6p"]
 resource_name = "Material.001"
 render_priority = 0
-shader = ExtResource("2_d6n6p")
+shader = ExtResource("3_s7bid")
 shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.393326, 0.31123, 0.273017, 1)
 shader_parameter/specular = 0.5
