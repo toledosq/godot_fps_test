@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d36jxeio48y3h"]
 
 [ext_resource type="Texture2D" uid="uid://g3atvjmmgpie" path="res://assets/prototype/crosshair086.png" id="1_u6b64"]
-[ext_resource type="Script" path="res://DebugBullet.gd" id="2_2h8lo"]
+[ext_resource type="Script" path="res://objects/debug/DebugBullet.gd" id="2_2h8lo"]
 
 [node name="DebugBullet" type="Sprite3D"]
 modulate = Color(1, 0, 0, 1)

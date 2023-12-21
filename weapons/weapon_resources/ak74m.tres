@@ -5,7 +5,7 @@
 [ext_resource type="Curve" uid="uid://763d20qh4fo6" path="res://weapons/curves/recoil_curve.tres" id="2_0646f"]
 [ext_resource type="PackedScene" uid="uid://4ee0oj5muhwm" path="res://weapons/projectiles/projectile.tscn" id="2_b0l7q"]
 [ext_resource type="AudioStream" uid="uid://bcbpmcn7ie6xp" path="res://assets/sfx/ak-reload.mp3" id="4_u8pte"]
-[ext_resource type="PackedScene" uid="uid://bgi4wk0nog8fa" path="res://weapons/weapon_scenes/ak_74m_player_model_short.tscn" id="6_4mueu"]
+[ext_resource type="PackedScene" uid="uid://sah1757ioacl" path="res://weapons/weapon_scenes/ak_74m_player_model.tscn" id="6_1abhb"]
 [ext_resource type="PackedScene" uid="uid://b12chmbhdv3mj" path="res://weapons/weapon_scenes/ak_74m_world_model.tscn" id="7_bgi7m"]
 
 [resource]
@@ -15,7 +15,7 @@ weapon_range = 2000
 weapon_damage = 1
 rate_of_fire = 600
 projectile_velocity = 200
-weapon_player_model = ExtResource("6_4mueu")
+weapon_player_model = ExtResource("6_1abhb")
 weapon_world_model = ExtResource("7_bgi7m")
 projectile_scene = ExtResource("2_b0l7q")
 ammo_type = 2

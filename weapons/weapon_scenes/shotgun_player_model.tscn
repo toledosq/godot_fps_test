@@ -1,7 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://daq2jlevv71vm"]
+[gd_scene load_steps=28 format=3 uid="uid://daq2jlevv71vm"]
 
 [ext_resource type="Script" path="res://weapons/weapon_resources/weapon.gd" id="1_io82o"]
 [ext_resource type="Texture2D" uid="uid://cnpoeplq4xxt" path="res://assets/weapons/shotgun/Shotgun_UE4_BaseColor.png" id="2_jpudi"]
+[ext_resource type="Shader" path="res://resources/Viewmodel Shader/viewmodel.gdshader" id="2_s4yth"]
+[ext_resource type="Script" path="res://addons/fpc/Viewmodel_Shader_Weapon_Models.gd" id="2_wqwpt"]
 [ext_resource type="Texture2D" uid="uid://bmv2t8axfh4ms" path="res://assets/weapons/shotgun/Shotgun_UE4_OcclusionRoughnessMetallic.png" id="3_8605m"]
 [ext_resource type="Texture2D" uid="uid://cumj6ovbscqcg" path="res://assets/weapons/shotgun/Shotgun_UE4_Normal.png" id="4_ie1gb"]
 [ext_resource type="AudioStream" uid="uid://mbeabmexv2n3" path="res://assets/sfx/cannonball-89596.mp3" id="5_tad0m"]
@@ -46,17 +48,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ig3u7")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2fv3"]
-albedo_texture = ExtResource("2_jpudi")
-metallic = 1.0
-metallic_texture = ExtResource("3_8605m")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("3_8605m")
-roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("4_ie1gb")
-ao_enabled = true
-ao_texture = ExtResource("3_8605m")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxo5c"]
+render_priority = 0
+shader = ExtResource("2_s4yth")
+shader_parameter/viewmodel_fov = 40.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/roughness_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("2_jpudi")
+shader_parameter/texture_metallic = ExtResource("3_8605m")
+shader_parameter/texture_roughness = ExtResource("3_8605m")
+shader_parameter/texture_normal = ExtResource("4_ie1gb")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_i7a52"]
 _surfaces = [{
@@ -444,50 +452,46 @@ animation_player = NodePath("AnimationPlayer")
 fire_audio_player = NodePath("FireAudioStreamPlayer")
 reload_audio_player = NodePath("ReloadAudioStreamPlayer")
 muzzle_marker = NodePath("Marker3D")
-player_camera_position = Vector3(0.178309, -0.5, -0.36261)
+player_camera_position = Vector3(0.08, -0.25, -0.35)
 player_camera_rotation = Vector3(0, 1.5708, 0)
-ads_position = Vector3(0, -0.44908, -0.269895)
+ads_position = Vector3(0, -0.221609, -0.271643)
 
-[node name="ShotgunModel" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+[node name="ShotgunModel" type="Node3D" parent="." node_paths=PackedStringArray("meshes_with_shader")]
+script = ExtResource("2_wqwpt")
+meshes_with_shader = [NodePath("Body_lowpoly"), NodePath("Stock_lowpoly"), NodePath("Barrel_lowpoly"), NodePath("ForendSlider_lowpoly"), NodePath("Trigger_lowpoly"), NodePath("Forend_lowpoly")]
+viewmodelFOV = 40.0
 
 [node name="Body_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
-layers = 2
 mesh = SubResource("ArrayMesh_3708v")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_s2fv3")
+surface_material_override/0 = SubResource("ShaderMaterial_bxo5c")
 
 [node name="Stock_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
-layers = 2
 mesh = SubResource("ArrayMesh_dg1mc")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_s2fv3")
+surface_material_override/0 = SubResource("ShaderMaterial_bxo5c")
 
 [node name="Barrel_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
-layers = 2
 mesh = SubResource("ArrayMesh_8rupg")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_s2fv3")
+surface_material_override/0 = SubResource("ShaderMaterial_bxo5c")
 
 [node name="ForendSlider_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
 transform = Transform3D(1, 4.5402e-09, 0, 5.00586e-09, 1, -2.79397e-09, 1.49012e-08, 1.86265e-09, 1, 0, 0, 0)
-layers = 2
 mesh = SubResource("ArrayMesh_4t7j0")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_s2fv3")
+surface_material_override/0 = SubResource("ShaderMaterial_bxo5c")
 
 [node name="Trigger_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
-layers = 2
 mesh = SubResource("ArrayMesh_57g06")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_s2fv3")
+surface_material_override/0 = SubResource("ShaderMaterial_bxo5c")
 
 [node name="Forend_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
 transform = Transform3D(1, 4.5402e-09, 0, 5.00586e-09, 1, -2.79397e-09, 1.49012e-08, 1.86265e-09, 1, 0, 0, 0)
-layers = 2
 mesh = SubResource("ArrayMesh_2c6l8")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_s2fv3")
+surface_material_override/0 = SubResource("ShaderMaterial_bxo5c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -495,7 +499,7 @@ libraries = {
 }
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.48483, 0.391852, -0.00136273)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.491635, 0.198595, -0.00136273)
 
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_tad0m")

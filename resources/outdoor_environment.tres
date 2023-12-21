@@ -1,0 +1,26 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://big1w54uuerqs"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_edcox"]
+ground_color = Color(0.160784, 0.815686, 0.905882, 1)
+
+[sub_resource type="Sky" id="Sky_2iust"]
+sky_material = SubResource("PhysicalSkyMaterial_edcox")
+
+[resource]
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_2iust")
+ambient_light_source = 3
+tonemap_mode = 2
+tonemap_white = 1.2
+ssao_enabled = true
+ssao_power = 3.0
+ssao_detail = 3.0
+ssao_horizon = 0.04
+ssao_ao_channel_affect = 0.5
+ssil_enabled = true
+ssil_intensity = 0.5
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 1.99
+sdfgi_energy = 0.32
+volumetric_fog_density = 0.005
+volumetric_fog_emission = Color(0.164706, 0.164706, 0.164706, 1)
