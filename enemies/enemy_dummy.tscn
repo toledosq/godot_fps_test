@@ -22,8 +22,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331326, 0)
 target_position = Vector3(0, 0, -10)
 collision_mask = 2
 
+[node name="Eyes" type="Node3D" parent="."]
+
 [node name="SightRange" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.46053)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SightRange"]

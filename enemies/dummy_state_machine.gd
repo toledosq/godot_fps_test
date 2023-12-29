@@ -5,12 +5,16 @@ enum { NONE, IDLE, ALERT, STUNNED }
 var state = NONE
 var state_locked := false
 
-var target = null
+@export var turn_speed: float = 2.0
 
 @onready var ray_cast = $RayCast
 @onready var animation_player = $EnemyDummyModel/AnimationPlayer
 @onready var stun_timer = $StunTimer
 @onready var alert_timer = $AlertTimer
+@onready var eyes = $Eyes
+
+var target = null
+var target_last_position: Vector3
 
 
 func _ready():
@@ -25,16 +29,17 @@ func _process(_delta):
 		elif target:
 			if state != ALERT:
 				enter_alert_state()
-		#else:
-			#if state != IDLE:
-				#enter_idle_state()
 
 	# Animations and behaviors go here
 	match state:
 		IDLE:
 			pass
 		ALERT:
-			pass
+			if target:
+				eyes.look_at(target.global_transform.origin, Vector3.UP)
+				rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
+			else:
+				eyes.look_at(target_last_position)
 		STUNNED:
 			pass
 
@@ -62,6 +67,7 @@ func _on_sight_range_body_entered(body):
 
 func _on_sight_range_body_exited(body):
 	print("%s no longer detecting %s" % [self.name, body.name])
+	target_last_position = target.global_transform.origin
 	target = null
 	alert_timer.start(1.0)
 
@@ -75,5 +81,6 @@ func _on_stun_timer_timeout():
 
 
 func _on_alert_timer_timeout():
+	# If stunned, stun timer timeout will handle state transition
 	if state != STUNNED and !target:
 		enter_idle_state()
