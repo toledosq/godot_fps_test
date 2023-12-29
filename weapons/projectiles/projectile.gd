@@ -17,7 +17,8 @@ func _physics_process(delta: float) -> void:
 	var query = PhysicsRayQueryParameters3D.create(prev_pos, new_pos)
 	var result = get_world_3d().direct_space_state.intersect_ray(query)
 	
-	var distance = prev_pos.distance_to(new_pos)
+	# TODO: Add a curve for damage over time, sample distance, then adjust damage below
+	#var distance = prev_pos.distance_to(new_pos)
 	
 	if result:
 		is_hit = true
