@@ -145,6 +145,10 @@ func equip_weapon(arrayIndex: int, fast := false) -> void:
 	# Bring child into world
 	fps_rig.add_child(current_weapon_model)
 	
+	# Send event alerts
+	Globals.player_weapon_ammo = current_weapon_resource.current_ammo_amount
+	Globals.player_current_weapon = current_weapon_resource.weapon_name
+	
 	# Start equip animation
 	if !fast:
 		current_weapon_model.animation_player.play(current_weapon_resource.equip_animation)
@@ -152,10 +156,6 @@ func equip_weapon(arrayIndex: int, fast := false) -> void:
 	# Wait for equip animation to finish
 	if current_weapon_model.animation_player.is_playing():
 		await current_weapon_model.animation_player.animation_finished
-	
-	# Send event alerts
-	Globals.player_weapon_ammo = current_weapon_resource.current_ammo_amount
-	Globals.player_current_weapon = current_weapon_resource.weapon_name
 	
 	# Allow player to fire weapon
 	change_state(STATES.READY)
@@ -182,6 +182,12 @@ func unequip_weapon(fast: bool = false) -> void:
 	current_weapon_model.queue_free()
 	current_weapon_model = null
 	current_weapon_resource = null
+	
+	# If no weapons left in stack, inform UI
+	if len(weapons_array) == 0:
+		Globals.player_current_weapon = ""
+		Globals.player_weapon_ammo = 0
+	
 	print("WeaponManager: Weapon unequipped")
 
 
