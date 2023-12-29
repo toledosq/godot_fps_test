@@ -1,14 +1,16 @@
-extends Node3D
+extends CharacterBody3D
 
 # STATES
-enum { NONE, IDLE, ALERT, STUNNED }
+enum { NONE, IDLE, ALERT, STUNNED, ATTACKING }
+
 var state = NONE
 var state_locked := false
 
+@export var move_speed: int = 2
 @export var turn_speed: float = 2.0
 
 @onready var ray_cast = $RayCast
-@onready var animation_player = $EnemyDummyModel/AnimationPlayer
+@onready var animation_player = $AnimationPlayer
 @onready var stun_timer = $StunTimer
 @onready var alert_timer = $AlertTimer
 @onready var eyes = $Eyes
@@ -16,32 +18,48 @@ var state_locked := false
 var target = null
 var target_last_position: Vector3
 
+var can_attack := true
+
 
 func _ready():
 	enter_idle_state()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _physics_process(delta):
+	# State transitions
 	if state != STUNNED:
 		if Input.is_action_just_pressed("test_stun_enemy"):
 			enter_stunned_state()
 		elif target:
 			if state != ALERT:
 				enter_alert_state()
-
-	# Animations and behaviors go here
+	
 	match state:
 		IDLE:
 			pass
 		ALERT:
-			if target:
-				eyes.look_at(target.global_transform.origin, Vector3.UP)
-				rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
-			else:
-				eyes.look_at(target_last_position)
+			track_target()
+			movement()
 		STUNNED:
 			pass
+
+
+func movement():
+	var move_to_pos = target.global_transform.origin if target else target_last_position
+	var direction = -(global_transform.origin - move_to_pos).normalized()
+	velocity = direction * move_speed
+	move_and_slide()
+
+
+func track_target():
+	if target:
+		# Look at target
+		eyes.look_at(target.global_transform.origin, Vector3.UP)
+		# rotate dummy body to target
+		rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
+		#global_rotate(Vector3(0,1,0), deg_to_rad(eyes.rotation.y * turn_speed))
+	else:
+		eyes.look_at(target_last_position)
 
 
 func enter_idle_state():

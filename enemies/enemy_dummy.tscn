@@ -1,21 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4kioekv88duy"]
+[gd_scene load_steps=5 format=3 uid="uid://b4kioekv88duy"]
 
 [ext_resource type="Script" path="res://enemies/dummy_state_machine.gd" id="1_hmp62"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a4dlr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_av510"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hbbuf"]
 radius = 10.0
 
-[node name="EnemyDummy" type="Node3D"]
+[node name="EnemyDummy" type="CharacterBody3D"]
 script = ExtResource("1_hmp62")
 
-[node name="EnemyDummyModel" type="Node3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a4dlr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemyDummyModel"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_av510")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemyDummyModel"]
+skeleton = NodePath("")
 
 [node name="RayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331326, 0)
@@ -35,6 +37,9 @@ one_shot = true
 
 [node name="AlertTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 
 [connection signal="body_entered" from="SightRange" to="." method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="." method="_on_sight_range_body_exited"]
