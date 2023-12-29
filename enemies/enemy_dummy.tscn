@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4kioekv88duy"]
+
+[ext_resource type="Script" path="res://enemies/dummy_state_machine.gd" id="1_hmp62"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_av510"]
+
+[node name="EnemyDummy" type="Node3D"]
+script = ExtResource("1_hmp62")
+
+[node name="EnemyDummyModel" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemyDummyModel"]
+mesh = SubResource("CapsuleMesh_av510")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemyDummyModel"]
+
+[node name="RayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331326, 0)
+target_position = Vector3(0, 0, -10)
+collision_mask = 2

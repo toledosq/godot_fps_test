@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cs4drhmc1bql5"]
+[gd_scene load_steps=27 format=3 uid="uid://cs4drhmc1bql5"]
 
 [ext_resource type="Script" path="res://test_world.gd" id="1_774bg"]
 [ext_resource type="Texture2D" uid="uid://cjaicr2d6c32x" path="res://assets/prototype/texture_01.png" id="2_6rxpf"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b3kf6wwm26ab5" path="res://weapons/weapon_scenes/uzi_world_model.tscn" id="8_p77q5"]
 [ext_resource type="PackedScene" uid="uid://byjgw0ik783d" path="res://objects/world/target_dummy.tscn" id="9_uuv57"]
 [ext_resource type="AudioStream" uid="uid://bpwybxodta0s" path="res://assets/sfx/030822_leaves-rustling-in-wind-79518.mp3" id="10_bg31u"]
+[ext_resource type="PackedScene" uid="uid://b4kioekv88duy" path="res://enemies/enemy_dummy.tscn" id="12_w4syi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5tq2"]
 albedo_texture = ExtResource("2_6rxpf")
@@ -180,3 +181,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59764, 1, -21)
 stream = ExtResource("10_bg31u")
 autoplay = true
 bus = &"Background"
+
+[node name="EnemyDummy" parent="." instance=ExtResource("12_w4syi")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.1857, 1.01124, -7.64861)

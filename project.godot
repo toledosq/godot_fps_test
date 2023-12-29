@@ -26,9 +26,8 @@ EventBus="*res://globals/event_bus.gd"
 
 [display]
 
-window/size/viewport_width=3840
-window/size/viewport_height=2160
-window/size/mode=2
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [input]
 
@@ -101,6 +100,11 @@ interact={
 weapon_drop={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":72,"key_label":0,"unicode":104,"echo":false,"script":null)
+]
+}
+test_stun_enemy={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":116,"echo":false,"script":null)
 ]
 }
 
