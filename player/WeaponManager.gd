@@ -261,11 +261,6 @@ func fire_weapon() -> void:
 	change_state(STATES.NOTREADY)
 	
 	if current_weapon_resource.current_ammo_amount > 0:
-		print("Shooting projectile")
-		
-		# TODO: Experimental: Create Node3D projectile
-		# create_projectile()
-		
 		# launch projectile rigidbody
 		launch_projectile()
 		
@@ -287,19 +282,6 @@ func fire_weapon() -> void:
 			await current_weapon_model.animation_player.animation_finished
 	
 	change_state(STATES.READY)
-	print("Weapon ammo count: %s" % current_weapon_resource.current_ammo_amount)
-
-
-# TODO: VERSION 1: Node3D, does own raycasting, uses basis for direction
-func create_projectile() -> void:
-	var projectile = current_weapon_resource.projectile_scene.instantiate()
-	current_weapon_model.muzzle_marker.add_child(projectile)
-	# Move projectile to the muzzle position
-	projectile.position = current_weapon_model.muzzle_marker.global_position
-	# Set the projectile's direction to THIS basis
-	projectile.transform.basis = global_transform.basis
-	projectile.speed = current_weapon_resource.projectile_velocity
-	projectile.damage = current_weapon_resource.weapon_damage
 
 
 # VERSION 2: RigidBody3D, raycast to target to determine direction

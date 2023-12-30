@@ -5,7 +5,7 @@ var speed: int = 0
 var prev_pos := Vector3()
 var direction : Vector3
 var is_hit := false
-var debug_bullet := preload("res://objects/debug/debug_bullet.tscn")
+# var debug_bullet := preload("res://objects/debug/debug_bullet.tscn")
 
 
 func _ready() -> void:
@@ -29,22 +29,23 @@ func _physics_process(delta: float) -> void:
 		if result.collider.has_method("hit"):
 			result.collider.hit(damage)
 		
+		# create_hit_indicator(result.position)
+		
 		# TODO: Hit Particle Effects
-		create_hit_indicator(result.position)
-		#mesh_instance_3d.hide()
-		#hit_particles.global_position = new_pos
-		#hit_particles.emitting = true
-		#await get_tree().create_timer(1).timeout
+		# mesh_instance_3d.hide()
+		# hit_particles.global_position = new_pos
+		# hit_particles.emitting = true
+		# await get_tree().create_timer(1).timeout
 		queue_free()
 
 	prev_pos = new_pos
 
 
-func create_hit_indicator(_position: Vector3) -> void:
-	var hit_indicator = debug_bullet.instantiate()
-	var world = get_tree().get_root().get_child(0)
-	world.add_child(hit_indicator)
-	hit_indicator.global_translate(_position)
+#func create_hit_indicator(_position: Vector3) -> void:
+	#var hit_indicator = debug_bullet.instantiate()
+	#var world = get_tree().get_root().get_child(0)
+	#world.add_child(hit_indicator)
+	#hit_indicator.global_translate(_position)
 
 
 func _on_timer_timeout() -> void:

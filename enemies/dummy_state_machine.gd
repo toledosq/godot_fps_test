@@ -15,15 +15,19 @@ var state_locked := false
 @onready var ray_cast = $RayCast
 @onready var stun_timer = $StunTimer
 @onready var alert_timer = $AlertTimer
+@onready var hit_timer = $HitTimer
 @onready var eyes = $Eyes
+@onready var mesh = $MeshInstance3D
+
 @onready var health := max_health
 
 var target = null
 var target_last_position: Vector3
-var can_attack := true
+var alive := false
 
 
 func _ready():
+	alive = true
 	enter_idle_state()
 
 
@@ -81,10 +85,18 @@ func track_target():
 
 
 func hit(damage):
-	health -= damage
-	if health <= 0:
-		print("%s died" % self.name)
-		queue_free()
+	$HitTimer.start()
+	if alive:
+		mesh.get_surface_override_material(0).set_shader_parameter("active",true)
+		health -= damage
+		if health <= 0:
+			on_death()
+
+
+func on_death():
+	alive = false
+	print("%s died" % self.name)
+	queue_free()
 
 
 func enter_idle_state():
@@ -131,3 +143,7 @@ func _on_alert_timer_timeout():
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 	move_and_slide()
+
+
+func _on_hit_timer_timeout():
+	mesh.get_surface_override_material(0).set_shader_parameter("active", false)

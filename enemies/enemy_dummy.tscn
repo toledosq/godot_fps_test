@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4kioekv88duy"]
+[gd_scene load_steps=11 format=3 uid="uid://b4kioekv88duy"]
 
 [ext_resource type="Script" path="res://enemies/dummy_state_machine.gd" id="1_hmp62"]
+[ext_resource type="Shader" path="res://resources/shaders/hit_flash.gdshader" id="2_3f1l1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a4dlr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_av510"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqpi4"]
+render_priority = 0
+shader = ExtResource("2_3f1l1")
+shader_parameter/active = false
+shader_parameter/red = Color(1, 0, 0, 1)
+shader_parameter/white = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jh063"]
 transparency = 1
@@ -52,6 +60,7 @@ shape = SubResource("CapsuleShape3D_a4dlr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_av510")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_sqpi4")
 
 [node name="DebugFaceLine" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.5)
@@ -85,8 +94,13 @@ one_shot = true
 [node name="AlertTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="SightRange" to="." method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="." method="_on_sight_range_body_exited"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="AlertTimer" to="." method="_on_alert_timer_timeout"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
