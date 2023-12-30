@@ -82,9 +82,17 @@ unique_name_in_owner = true
 cull_mask = 524289
 script = ExtResource("2_c84n2")
 
+[node name="TrueCenterReference" type="Sprite3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.329)
+visible = false
+gi_mode = 0
+modulate = Color(1, 0, 0, 1)
+double_sided = false
+texture = ExtResource("5_rpbxq")
+
 [node name="InteractRay" type="RayCast3D" parent="Head/Camera"]
 unique_name_in_owner = true
-target_position = Vector3(0, 0, -5)
+target_position = Vector3(0, 0, -2)
 
 [node name="WeaponManager" type="Node3D" parent="Head/Camera" node_paths=PackedStringArray("player_camera")]
 script = ExtResource("2_hcpux")
@@ -100,13 +108,6 @@ libraries = {
 "": SubResource("AnimationLibrary_o0unb")
 }
 blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"headbob", 0.5, &"headbob", &"RESET", 0.5]
-
-[node name="Sprite3D" type="Sprite3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.329)
-gi_mode = 0
-modulate = Color(1, 0, 0, 1)
-double_sided = false
-texture = ExtResource("5_rpbxq")
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3

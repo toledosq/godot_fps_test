@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cs4drhmc1bql5"]
+[gd_scene load_steps=45 format=3 uid="uid://cs4drhmc1bql5"]
 
 [ext_resource type="Script" path="res://test_world.gd" id="1_774bg"]
 [ext_resource type="Texture2D" uid="uid://cjaicr2d6c32x" path="res://assets/prototype/texture_01.png" id="2_6rxpf"]
@@ -24,11 +24,8 @@ size = Vector3(1, 10, 50)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_358rx"]
 data = PackedVector3Array(-0.5, 5, 25, 0.5, 5, 25, -0.5, -5, 25, 0.5, 5, 25, 0.5, -5, 25, -0.5, -5, 25, 0.5, 5, -25, -0.5, 5, -25, 0.5, -5, -25, -0.5, 5, -25, -0.5, -5, -25, 0.5, -5, -25, 0.5, 5, 25, 0.5, 5, -25, 0.5, -5, 25, 0.5, 5, -25, 0.5, -5, -25, 0.5, -5, 25, -0.5, 5, -25, -0.5, 5, 25, -0.5, -5, -25, -0.5, 5, 25, -0.5, -5, 25, -0.5, -5, -25, 0.5, 5, 25, -0.5, 5, 25, 0.5, 5, -25, -0.5, 5, 25, -0.5, 5, -25, 0.5, 5, -25, -0.5, -5, 25, 0.5, -5, 25, -0.5, -5, -25, 0.5, -5, 25, 0.5, -5, -25, -0.5, -5, -25)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qxy2t"]
-load_path = "res://.godot/imported/texture_02.png-1ea527bfa716785196d479c6b81909de.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptabp"]
-albedo_texture = SubResource("CompressedTexture2D_qxy2t")
+albedo_texture = ExtResource("2_6rxpf")
 uv1_scale = Vector3(50, 10, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7yv75"]
@@ -75,7 +72,7 @@ material = SubResource("StandardMaterial3D_4ogso")
 size = Vector3(15, 30, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp6fh"]
-albedo_texture = ExtResource("2_6rxpf")
+albedo_texture = ExtResource("3_ok7kp")
 uv1_triplanar = true
 
 [sub_resource type="PrismMesh" id="PrismMesh_dh2d1"]
@@ -90,7 +87,7 @@ data = PackedVector3Array(1, 0.25, 1.5, 1, -0.25, 1.5, -1, -0.25, 1.5, 1, 0.25, 
 data = PackedVector3Array(1, 0.25, 1.5, 1, -0.25, 1.5, -1, -0.25, 1.5, 1, 0.25, -1.5, -1, -0.25, -1.5, 1, -0.25, -1.5, 1, 0.25, 1.5, 1, 0.25, -1.5, 1, -0.25, 1.5, 1, 0.25, -1.5, 1, -0.25, -1.5, 1, -0.25, 1.5, 1, 0.25, -1.5, 1, 0.25, 1.5, -1, -0.25, -1.5, 1, 0.25, 1.5, -1, -0.25, 1.5, -1, -0.25, -1.5, -1, -0.25, 1.5, 1, -0.25, 1.5, -1, -0.25, -1.5, 1, -0.25, 1.5, 1, -0.25, -1.5, -1, -0.25, -1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwwyv"]
-albedo_texture = ExtResource("2_6rxpf")
+albedo_texture = ExtResource("3_ok7kp")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_gh2vy"]
@@ -139,12 +136,13 @@ background_noise_player = NodePath("AudioStreamPlayer")
 environment = ExtResource("3_5c8xm")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.686055, 0.715625, -0.131185, -0.59241, -0.444794, 0.671721, 0.42235, 0.538552, 0.729097, 0, 0, 0)
+transform = Transform3D(0.873772, -0.455239, 0.171113, 0, 0.351841, 0.93606, -0.486336, -0.817902, 0.30743, 0, 0, 0)
 layers = 3
 light_energy = 4.0
 light_volumetric_fog_energy = 2.0
 shadow_enabled = true
 shadow_bias = 0.05
+metadata/_edit_lock_ = true
 
 [node name="WallTargets" type="Node3D" parent="."]
 
