@@ -1,8 +1,11 @@
 extends Node
 
+var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") # Don't set this as a const, see the gravity section in _physics_process
+
 var current_player: Player
 var current_level: Level
 var player_transform
+
 
 var player_health: int:
 	set(val):

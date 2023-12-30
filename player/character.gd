@@ -50,8 +50,6 @@ var is_sprinting : bool = false
 var is_ads : bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes
-var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") # Don't set this as a const, see the gravity section in _physics_process
-
 @onready var interact_ray = %InteractRay
 @onready var reticle_1 = $UserInterface/Reticle_1
 
@@ -69,9 +67,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Gravity
-	#gravity = ProjectSettings.get_setting("physics/3d/default_gravity") # If the gravity changes during your game, uncomment this code
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= Globals.gravity * delta
 	
 	handle_jumping()
 	

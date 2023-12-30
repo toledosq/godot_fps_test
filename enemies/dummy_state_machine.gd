@@ -6,7 +6,7 @@ enum { NONE, IDLE, ALERT, STUNNED, ATTACKING }
 var state = NONE
 var state_locked := false
 
-@export var move_speed: float = 1.0
+@export var move_speed: float = 2.0
 @export var turn_speed: float = 2.0
 @export var alert_cooldown: float = 2.0
 
@@ -26,7 +26,7 @@ func _ready():
 	enter_idle_state()
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	# State transitions
 	if state != STUNNED:
 		if Input.is_action_just_pressed("test_stun_enemy"):
@@ -40,16 +40,19 @@ func _physics_process(_delta):
 			pass
 		ALERT:
 			track_target()
-			movement()
+			movement(delta)
 		STUNNED:
 			pass
 
 
-func movement():
+func movement(delta):
 	# TODO: Replace with Navigation
 	var move_to_pos = target.global_transform.origin if target else target_last_position
 	var direction = -(global_transform.origin - move_to_pos).normalized()
-	velocity = direction * move_speed
+	velocity = Vector3(direction.x, 0, direction.z) * move_speed
+	if not is_on_floor():
+		velocity.y -= Globals.gravity
+		
 	move_and_slide()
 
 
