@@ -10,6 +10,7 @@ var state_locked := false
 @export var turn_speed: float = 2.0
 @export var alert_cooldown: float = 2.0
 
+@onready var nav_agent = $NavigationAgent3D
 @onready var ray_cast = $RayCast
 @onready var stun_timer = $StunTimer
 @onready var alert_timer = $AlertTimer
@@ -26,6 +27,7 @@ func _ready():
 
 
 func _physics_process(_delta):
+		
 	# State transitions
 	if state != STUNNED:
 		if Input.is_action_just_pressed("test_stun_enemy"):
@@ -33,38 +35,46 @@ func _physics_process(_delta):
 		elif target:
 			if state != ALERT:
 				enter_alert_state()
+		movement()
 	
 	match state:
 		IDLE:
 			pass
 		ALERT:
 			track_target()
-			movement()
 		STUNNED:
 			pass
 
 
 func movement():
-	# TODO: Replace with Navigation
-	var move_to_pos = target.global_transform.origin if target else target_last_position
-	var direction = -(global_transform.origin - move_to_pos).normalized()
-	velocity = Vector3(direction.x, 0, direction.z) * move_speed
-	if not is_on_floor():
-		velocity.y -= Globals.gravity
+	if nav_agent.is_navigation_finished():
+		return
 		
-	move_and_slide()
+	var direction = -(global_transform.origin - target_last_position).normalized()
+	var next_location = nav_agent.get_next_path_position()
+	var new_velocity = (next_location - global_transform.origin).normalized() * move_speed
+	
+	if not is_on_floor():
+		new_velocity.y -= Globals.gravity
+	
+	# Move and Slide called on velocity computed
+	if nav_agent.avoidance_enabled:
+		nav_agent.set_velocity(new_velocity)
+	else:
+		_on_navigation_agent_3d_velocity_computed(new_velocity)
 
 
 func track_target():
 	if target:
 		# Get target last position
 		target_last_position = target.global_transform.origin
+		nav_agent.set_target_position(target_last_position)
 		# Look at target
 		eyes.look_at(target_last_position, Vector3.UP)
-		# rotate dummy body to target
-		rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
 	else:
 		eyes.look_at(target_last_position)
+	
+	rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
 
 
 func enter_idle_state():
@@ -90,7 +100,6 @@ func _on_sight_range_body_entered(body):
 
 func _on_sight_range_body_exited(body):
 	print("%s no longer detecting %s" % [self.name, body.name])
-	target_last_position = target.global_transform.origin
 	target = null
 	alert_timer.start(alert_cooldown)
 
@@ -107,3 +116,8 @@ func _on_alert_timer_timeout():
 	# If stunned, stun timer timeout will handle state transition
 	if state != STUNNED and !target:
 		enter_idle_state()
+
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
+	move_and_slide()
