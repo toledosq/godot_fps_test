@@ -117,6 +117,7 @@ func apply_recoil() -> void:
 func receive_weapon(weapon_resource: WeaponResource, fast := false) -> void:
 	weapon_resource = weapon_resource.duplicate(true)
 	weapons_array.push_back(weapon_resource)
+	EventBus.weapon_stack_changed.emit(weapons_array)
 	equip_weapon(max(len(weapons_array) - 1, 0), fast)
 
 
@@ -215,6 +216,7 @@ func drop_weapon() -> void:
 
 	unequip_weapon(true)
 	weapons_array.remove_at(current_weapon_idx)
+	EventBus.weapon_stack_changed.emit(weapons_array)
 	current_weapon_idx = null
 	equip_weapon(next_weapon_idx)
 

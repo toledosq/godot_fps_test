@@ -33,11 +33,6 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if velocity.x > 30 \
-	or velocity.y > 30 \
-	or velocity.z > 30:
-		on_death()
-	
 	movement()
 	
 	# State transitions
@@ -58,15 +53,28 @@ func _physics_process(_delta):
 
 
 func movement():
-	if nav_agent.is_navigation_finished() or state == STUNNED:
+	# If no navigation, apply gravity and return
+	if nav_agent.is_navigation_finished():
 		if not is_on_floor():
 			velocity.y -= Globals.gravity
 			move_and_slide()
-		
-	# var direction = -(global_transform.origin - target_last_position).normalized()
-	var next_location = nav_agent.get_next_path_position()
-	var new_velocity = (next_location - global_transform.origin).normalized() * move_speed
+		return
+	else:
+		navigate()
+
+
+func navigate():
+	var new_velocity: Vector3
 	
+	# If stunned, stop moving
+	if state == STUNNED:
+		new_velocity = Vector3.ZERO
+	# Otherwise, find next nav point and set velocity
+	else:
+		var next_location: Vector3 = nav_agent.get_next_path_position()
+		new_velocity = (next_location - global_transform.origin).normalized() * move_speed
+	
+	# Apply gravity
 	if not is_on_floor():
 		new_velocity.y -= Globals.gravity
 	else:

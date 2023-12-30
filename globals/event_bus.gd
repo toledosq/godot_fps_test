@@ -6,6 +6,7 @@ signal reserve_ammo_changed(ammo_count)
 signal display_alert_text(text)
 
 signal give_weapon_to_player(weapon_resource)
+signal weapon_stack_changed(weapon_stack)
 
 signal spawn_enemy()
 signal enemy_spawned()
