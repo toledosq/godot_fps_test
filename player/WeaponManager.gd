@@ -28,6 +28,7 @@ var collision_exclusion := [] # Holds the currently instantiated projectiles for
 
 var can_fire := true
 var ads := false
+var recoil_amplitude_modifier := 1.0
 
 # Dynamic Recoil vars
 var return_position : Vector3
@@ -59,9 +60,11 @@ func _process(delta: float) -> void:
 		if ads:
 			current_weapon_model.transform.origin = current_weapon_model.transform.origin.lerp(current_weapon_model.ads_position, ADS_LERP * delta)
 			camera.bob_amount = camera.ads_bob
+			recoil_amplitude_modifier = 0.25
 		else:
 			current_weapon_model.transform.origin = current_weapon_model.transform.origin.lerp(current_weapon_model.player_camera_position, ADS_LERP * delta)
 			camera.bob_amount = camera.default_bob
+			recoil_amplitude_modifier = 1.0
 
 
 func _physics_process(delta: float) -> void:
@@ -82,9 +85,9 @@ func lerp_recoil(delta: float) -> void:
 		current_weapon_model.rotation.x = lerp(current_weapon_model.rotation.x, target_rot.x, current_weapon_resource.lerp_speed * delta)
 
 		# Adjust target rotation/position for next physics tic
-		target_rot.z = current_weapon_resource.recoil_rotation_z.sample(current_time) * current_weapon_resource.recoil_amplitude.y
-		target_rot.x = current_weapon_resource.recoil_rotation_x.sample(current_time) * -current_weapon_resource.recoil_amplitude.x
-		target_pos.z = current_weapon_resource.recoil_position_z.sample(current_time) * current_weapon_resource.recoil_amplitude.z
+		target_rot.z = current_weapon_resource.recoil_rotation_z.sample(current_time) * current_weapon_resource.recoil_amplitude.y * recoil_amplitude_modifier
+		target_rot.x = current_weapon_resource.recoil_rotation_x.sample(current_time) * -current_weapon_resource.recoil_amplitude.x * recoil_amplitude_modifier
+		target_pos.z = current_weapon_resource.recoil_position_z.sample(current_time) * current_weapon_resource.recoil_amplitude.z * recoil_amplitude_modifier
 		
 	else:
 		# Lerp to the default rotation/position
@@ -95,7 +98,7 @@ func lerp_recoil(delta: float) -> void:
  
 func apply_recoil() -> void:
 	# Randomize which y direction the gun rotates
-	current_weapon_resource.recoil_amplitude.y *= -1 if randf() > 0.5 else 1
+	current_weapon_resource.recoil_amplitude.y *= -1 if randf() > 0.6 else 1
 	
 	# Rotate
 	target_rot.z = current_weapon_resource.recoil_rotation_z.sample(0)
