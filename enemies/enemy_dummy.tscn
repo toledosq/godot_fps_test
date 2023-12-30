@@ -7,7 +7,8 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_av510"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqpi4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmj8x"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_3f1l1")
 shader_parameter/active = false
@@ -60,7 +61,7 @@ shape = SubResource("CapsuleShape3D_a4dlr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_av510")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_sqpi4")
+surface_material_override/0 = SubResource("ShaderMaterial_dmj8x")
 
 [node name="DebugFaceLine" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.5)

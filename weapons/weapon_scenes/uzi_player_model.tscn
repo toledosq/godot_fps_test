@@ -470,5 +470,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0196377, -0.197948)
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_s5kt6")
 max_polyphony = 6
+bus = &"SFX"
 
 [node name="ReloadAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
