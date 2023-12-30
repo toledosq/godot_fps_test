@@ -3508,9 +3508,9 @@ animation_player = NodePath("AK74M_Model/AnimationPlayer")
 fire_audio_player = NodePath("FireAudioPlayer")
 reload_audio_player = NodePath("ReloadAudioPlayer")
 muzzle_marker = NodePath("Marker3D")
-player_camera_position = Vector3(0.124, -0.513, 0.01)
-player_camera_rotation = Vector3(0, -0.0244346, -0.0802851)
-ads_position = Vector3(-0.116, -0.376, 0.35)
+player_camera_position = Vector3(0.0652911, -0.513, -0.19533)
+player_camera_rotation = Vector3(0.0122173, -0.0488692, -0.0802851)
+ads_position = Vector3(-0.11562, -0.379772, -0.0109219)
 
 [node name="AK74M_Model" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)

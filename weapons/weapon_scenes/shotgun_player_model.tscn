@@ -321,7 +321,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.35, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.03, 0, 0), Vector3(-0.0452421, 0.00370972, 0), Vector3(-0.06, 0.001, 0), Vector3(-0.065, 0.001, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.03), Vector3(0, 0.004, 0.045), Vector3(0, 0.001, 0.06), Vector3(0, 0.001, 0.065), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -345,7 +345,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.08, 4.65661e-10, -1.36424e-12), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0.08), Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -357,7 +357,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.08, 4.65661e-10, -1.36424e-12), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0.08), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_rcvhh"]
@@ -397,7 +397,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(1.4, 1.7, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0802181, 0, -9.00257e-10), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.08), Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -409,7 +409,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1.4, 1.7, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0802181, 0, -9.00257e-10), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.08), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vtm5y"]
@@ -427,37 +427,42 @@ fire_audio_player = NodePath("FireAudioStreamPlayer")
 reload_audio_player = NodePath("ReloadAudioStreamPlayer")
 muzzle_marker = NodePath("Marker3D")
 player_camera_position = Vector3(0.0803904, -0.276965, -0.161565)
-player_camera_rotation = Vector3(0, 1.5708, 0.0174533)
-ads_position = Vector3(0, -0.22, -0.27)
+player_camera_rotation = Vector3(0.0285361, 0, 0)
+ads_position = Vector3(0, -0.22, -0.159619)
 
 [node name="ShotgunModel" type="Node3D" parent="." node_paths=PackedStringArray("meshes_with_shader")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_wqwpt")
 meshes_with_shader = [NodePath("Body_lowpoly"), NodePath("Stock_lowpoly"), NodePath("Barrel_lowpoly"), NodePath("ForendSlider_lowpoly"), NodePath("Trigger_lowpoly"), NodePath("Forend_lowpoly")]
 viewmodelFOV = 40.0
 
 [node name="Body_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_3708v")
 skeleton = NodePath("")
 
 [node name="Stock_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_dg1mc")
 skeleton = NodePath("")
 
 [node name="Barrel_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_8rupg")
 skeleton = NodePath("")
 
 [node name="ForendSlider_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
-transform = Transform3D(1, 4.5402e-09, 0, 5.00586e-09, 1, -2.79397e-09, 1.49012e-08, 1.86265e-09, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1.86265e-09, 1, 5.00586e-09, 1, -1.86265e-09, -1, 5.00586e-09, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4t7j0")
 skeleton = NodePath("")
 
 [node name="Trigger_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_57g06")
 skeleton = NodePath("")
 
 [node name="Forend_lowpoly" type="MeshInstance3D" parent="ShotgunModel"]
-transform = Transform3D(1, 4.5402e-09, 0, 5.00586e-09, 1, -2.79397e-09, 1.49012e-08, 1.86265e-09, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1.86265e-09, 1, 5.00586e-09, 1, -1.86265e-09, -1, 5.00586e-09, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_2c6l8")
 skeleton = NodePath("")
 
@@ -467,7 +472,7 @@ libraries = {
 }
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.491635, 0.198595, -0.00136273)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000594407, 0.197474, -0.467529)
 
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_tad0m")

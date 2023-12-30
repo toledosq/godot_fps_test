@@ -138,6 +138,10 @@ func equip_weapon(arrayIndex: int, fast := false) -> void:
 	current_weapon_resource = next_weapon
 	current_weapon_model = current_weapon_resource.weapon_player_model.instantiate()
 	
+	# Change weapon model scale to account for FOV
+	# TODO: Calculate scale modifier based on player FOV and weapon desired FOV
+	current_weapon_model.scale.z *= 0.5
+	
 	# Move weapon model to player camera position
 	current_weapon_model.position = current_weapon_model.player_camera_position
 	current_weapon_model.rotation = current_weapon_model.player_camera_rotation

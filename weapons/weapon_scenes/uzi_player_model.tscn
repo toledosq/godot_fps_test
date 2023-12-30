@@ -353,8 +353,9 @@ animation_player = NodePath("AnimationPlayer")
 fire_audio_player = NodePath("FireAudioStreamPlayer")
 reload_audio_player = NodePath("ReloadAudioStreamPlayer")
 muzzle_marker = NodePath("Marker3D")
-player_camera_position = Vector3(0.08, -0.0960255, -0.202895)
-ads_position = Vector3(0, -0.0579809, -0.16363)
+player_camera_position = Vector3(0.048576, -0.0992467, -0.151306)
+player_camera_rotation = Vector3(0.00445059, 0, 0)
+ads_position = Vector3(0, -0.0579809, -0.134867)
 
 [node name="UziModel" type="Node3D" parent="." node_paths=PackedStringArray("meshes_with_shader")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
