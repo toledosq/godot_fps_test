@@ -27,11 +27,19 @@ var alive := false
 
 
 func _ready():
+	Globals.enemy_count += 1
 	alive = true
 	enter_idle_state()
 
 
 func _physics_process(_delta):
+	if velocity.x > 30 \
+	or velocity.y > 30 \
+	or velocity.z > 30:
+		on_death()
+	
+	movement()
+	
 	# State transitions
 	if state != STUNNED:
 		if Input.is_action_just_pressed("test_stun_enemy"):
@@ -39,8 +47,6 @@ func _physics_process(_delta):
 		elif target:
 			if state != ALERT:
 				enter_alert_state()
-	
-	movement()
 	
 	match state:
 		IDLE:
@@ -53,9 +59,11 @@ func _physics_process(_delta):
 
 func movement():
 	if nav_agent.is_navigation_finished() or state == STUNNED:
-		return
+		if not is_on_floor():
+			velocity.y -= Globals.gravity
+			move_and_slide()
 		
-	var direction = -(global_transform.origin - target_last_position).normalized()
+	# var direction = -(global_transform.origin - target_last_position).normalized()
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - global_transform.origin).normalized() * move_speed
 	
@@ -94,6 +102,7 @@ func hit(damage):
 
 
 func on_death():
+	Globals.enemy_count -= 1
 	alive = false
 	print("%s died" % self.name)
 	queue_free()
@@ -123,7 +132,8 @@ func _on_sight_range_body_entered(body):
 func _on_sight_range_body_exited(body):
 	print("%s no longer detecting %s" % [self.name, body.name])
 	target = null
-	alert_timer.start(alert_cooldown)
+	if alive:
+		alert_timer.start(alert_cooldown)
 
 
 func _on_stun_timer_timeout():

@@ -14,6 +14,7 @@ func _ready():
 	EventBus.weapon_ammo_changed.connect(update_ammo_counter)
 	EventBus.reserve_ammo_changed.connect(update_ammo_reserve_counter)
 	EventBus.display_alert_text.connect(update_alert_text)
+	EventBus.enemy_count_updated.connect(update_enemy_counter)
 	
 	print("UI: Initializing")
 	update_ammo_reserve_counter(Globals.player_ammo_reserve_current)
@@ -36,3 +37,7 @@ func update_alert_text(text):
 	if animation_player.is_playing():
 		animation_player.seek(0)
 	animation_player.play("display_alert_text")
+
+
+func update_enemy_counter(count):
+	print(str(count))

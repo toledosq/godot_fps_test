@@ -6,6 +6,10 @@ var current_player: Player
 var current_level: Level
 var player_transform
 
+var enemy_count: int:
+	set(val):
+		enemy_count = val
+		EventBus.enemy_count_updated.emit(val)
 
 var player_health: int:
 	set(val):

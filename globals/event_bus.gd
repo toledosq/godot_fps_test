@@ -7,5 +7,9 @@ signal display_alert_text(text)
 
 signal give_weapon_to_player(weapon_resource)
 
+signal spawn_enemy()
+signal enemy_spawned()
+signal enemy_count_updated()
+
 func _ready():
 	print("Event Bus: Initialized")

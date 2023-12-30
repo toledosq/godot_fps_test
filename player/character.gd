@@ -154,7 +154,6 @@ func _process(_delta: float) -> void:
 		is_ads = true
 		WEAPON_MANAGER.ads = true
 		reticle_1.hide()
-		
 	
 	if Input.is_action_just_released("weapon_ads"):
 		is_ads = false
@@ -166,6 +165,9 @@ func _process(_delta: float) -> void:
 		
 	if Input.is_action_just_pressed("weapon_drop"):
 		WEAPON_MANAGER.drop_weapon()
+		
+	if Input.is_action_just_pressed("spawn_enemy"):
+		EventBus.spawn_enemy.emit()
 
 
 func _unhandled_input(event) -> void:

@@ -48,6 +48,8 @@ radius = 10.0
 
 [node name="EnemyDummy" type="CharacterBody3D"]
 script = ExtResource("1_hmp62")
+move_speed = 3.0
+max_health = 5
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
