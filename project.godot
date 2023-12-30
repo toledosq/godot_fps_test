@@ -23,6 +23,7 @@ buses/default_bus_layout="res://resources/audio/default_bus_layout.tres"
 
 Globals="*res://globals/globals.gd"
 EventBus="*res://globals/event_bus.gd"
+DrawLine3d="*res://globals/DrawLine3D.gd"
 
 [display]
 
@@ -112,6 +113,7 @@ test_stun_enemy={
 
 3d_render/layer_1="PlayerView"
 3d_render/layer_2="WeaponView"
+3d_render/layer_20="debug"
 3d_physics/layer_2="Player"
 
 [physics]

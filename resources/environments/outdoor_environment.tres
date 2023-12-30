@@ -8,7 +8,6 @@ sky_material = SubResource("PhysicalSkyMaterial_edcox")
 
 [resource]
 background_mode = 2
-background_energy_multiplier = 2.0
 sky = SubResource("Sky_2iust")
 tonemap_mode = 2
 tonemap_exposure = 1.2
@@ -18,9 +17,6 @@ ssao_power = 2.0
 ssao_light_affect = 1.0
 ssao_ao_channel_affect = 1.0
 ssil_enabled = true
-ssil_intensity = 0.9
-sdfgi_enabled = true
 sdfgi_use_occlusion = true
-sdfgi_cascades = 6
 volumetric_fog_density = 0.003
 volumetric_fog_length = 32.0

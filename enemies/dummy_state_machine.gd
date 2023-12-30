@@ -57,8 +57,10 @@ func movement():
 
 func track_target():
 	if target:
+		# Get target last position
+		target_last_position = target.global_transform.origin
 		# Look at target
-		eyes.look_at(target.global_transform.origin, Vector3.UP)
+		eyes.look_at(target_last_position, Vector3.UP)
 		# rotate dummy body to target
 		rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
 	else:

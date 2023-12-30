@@ -328,6 +328,9 @@ func launch_projectile() -> void:
 	
 	# Set projectile velocity to weapon's projectile velocity property
 	projectile.set_linear_velocity(direction * current_weapon_resource.projectile_velocity)
+	
+	# Draw debug ray
+	DrawLine3d.DrawRay(current_weapon_model.muzzle_marker.get_global_transform().origin, direction * current_weapon_resource.projectile_velocity, Color(1,0,0,0.5), 3)
 
 
 func remove_exclusion(projectile_RID: RID) -> void:

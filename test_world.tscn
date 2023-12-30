@@ -446,4 +446,4 @@ autoplay = true
 bus = &"Background"
 
 [node name="EnemyDummy" parent="." instance=ExtResource("12_w4syi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.6937, 1.01124, 14.9299)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.2063, 3.91124, 21.3299)
