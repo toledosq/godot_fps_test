@@ -38,9 +38,6 @@ one_shot = true
 [node name="AlertTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("")
-
 [connection signal="body_entered" from="SightRange" to="." method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="." method="_on_sight_range_body_exited"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

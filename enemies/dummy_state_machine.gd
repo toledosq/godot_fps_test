@@ -11,7 +11,6 @@ var state_locked := false
 @export var alert_cooldown: float = 2.0
 
 @onready var ray_cast = $RayCast
-@onready var animation_player = $AnimationPlayer
 @onready var stun_timer = $StunTimer
 @onready var alert_timer = $AlertTimer
 @onready var eyes = $Eyes
@@ -26,7 +25,7 @@ func _ready():
 	enter_idle_state()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# State transitions
 	if state != STUNNED:
 		if Input.is_action_just_pressed("test_stun_enemy"):
@@ -40,12 +39,12 @@ func _physics_process(delta):
 			pass
 		ALERT:
 			track_target()
-			movement(delta)
+			movement()
 		STUNNED:
 			pass
 
 
-func movement(delta):
+func movement():
 	# TODO: Replace with Navigation
 	var move_to_pos = target.global_transform.origin if target else target_last_position
 	var direction = -(global_transform.origin - move_to_pos).normalized()
