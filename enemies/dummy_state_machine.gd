@@ -9,16 +9,17 @@ var state_locked := false
 @export var move_speed: float = 2.0
 @export var turn_speed: float = 2.0
 @export var alert_cooldown: float = 2.0
+@export var max_health: int = 10
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var ray_cast = $RayCast
 @onready var stun_timer = $StunTimer
 @onready var alert_timer = $AlertTimer
 @onready var eyes = $Eyes
+@onready var health := max_health
 
 var target = null
 var target_last_position: Vector3
-
 var can_attack := true
 
 
@@ -27,7 +28,6 @@ func _ready():
 
 
 func _physics_process(_delta):
-		
 	# State transitions
 	if state != STUNNED:
 		if Input.is_action_just_pressed("test_stun_enemy"):
@@ -35,7 +35,8 @@ func _physics_process(_delta):
 		elif target:
 			if state != ALERT:
 				enter_alert_state()
-		movement()
+	
+	movement()
 	
 	match state:
 		IDLE:
@@ -47,7 +48,7 @@ func _physics_process(_delta):
 
 
 func movement():
-	if nav_agent.is_navigation_finished():
+	if nav_agent.is_navigation_finished() or state == STUNNED:
 		return
 		
 	var direction = -(global_transform.origin - target_last_position).normalized()
@@ -56,6 +57,8 @@ func movement():
 	
 	if not is_on_floor():
 		new_velocity.y -= Globals.gravity
+	else:
+		new_velocity.y = 0.0
 	
 	# Move and Slide called on velocity computed
 	if nav_agent.avoidance_enabled:
@@ -75,6 +78,13 @@ func track_target():
 		eyes.look_at(target_last_position)
 	
 	rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
+
+
+func hit(damage):
+	health -= damage
+	if health <= 0:
+		print("%s died" % self.name)
+		queue_free()
 
 
 func enter_idle_state():
