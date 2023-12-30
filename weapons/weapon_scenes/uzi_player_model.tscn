@@ -359,7 +359,7 @@ ads_position = Vector3(0, -0.0579809, -0.16363)
 [node name="UziModel" type="Node3D" parent="." node_paths=PackedStringArray("meshes_with_shader")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 script = ExtResource("2_h6gb2")
-meshes_with_shader = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+meshes_with_shader = [null, null, null, null, null, null, null, null, null, null, null]
 
 [node name="Skeleton3D" type="Skeleton3D" parent="UziModel"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

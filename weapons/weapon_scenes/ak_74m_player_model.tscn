@@ -4137,6 +4137,7 @@ bones/84/rotation = Quaternion(-5.42101e-20, 5.29396e-23, 2.58494e-26, 1)
 bones/84/scale = Vector3(1, 1, 1)
 
 [node name="Object_11" type="MeshInstance3D" parent="AK74M_Model/Sketchfab_model/810f0276179d4425a118b331d5f38189_fbx/Object_2/RootNode/Rig/Object_8/Skeleton3D"]
+visible = false
 mesh = ExtResource("2_ptfwd")
 skin = SubResource("Skin_nbe3p")
 
