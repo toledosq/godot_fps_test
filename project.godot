@@ -120,6 +120,7 @@ spawn_enemy={
 3d_render/layer_2="WeaponView"
 3d_render/layer_20="debug"
 3d_physics/layer_2="Player"
+3d_physics/layer_3="enemy"
 
 [physics]
 

@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Enemy extends CharacterBody3D
 
 # STATES
 enum { NONE, IDLE, ALERT, STUNNED, ATTACKING }
@@ -18,6 +18,8 @@ var state_locked := false
 @onready var hit_timer = $HitTimer
 @onready var eyes = $Eyes
 @onready var mesh = $MeshInstance3D
+@onready var sight_range = $SightRange
+@onready var alert_range = $AlertRange
 
 @onready var health := max_health
 
@@ -48,6 +50,7 @@ func _physics_process(_delta):
 			pass
 		ALERT:
 			track_target()
+			alert_nearby()
 		STUNNED:
 			pass
 
@@ -91,12 +94,10 @@ func track_target():
 	if target:
 		# Get target last position
 		target_last_position = target.global_transform.origin
-		nav_agent.set_target_position(target_last_position)
-		# Look at target
-		eyes.look_at(target_last_position, Vector3.UP)
-	else:
-		eyes.look_at(target_last_position)
-	
+
+	nav_agent.set_target_position(target_last_position)
+	# Look at target
+	eyes.look_at(target_last_position, Vector3.UP)
 	rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
 
 
@@ -124,6 +125,15 @@ func enter_idle_state():
 func enter_alert_state():
 	state = ALERT
 	print("%s Entered alert state" % self.name)
+
+
+func alert_nearby():
+	for body in alert_range.get_overlapping_bodies():
+		if body == self:
+			continue
+		elif body is Enemy and body.state == IDLE:
+			body.target_last_position = target_last_position
+			body.enter_alert_state()
 
 
 func enter_stunned_state(seconds: float = 2.0):

@@ -84,6 +84,7 @@ script = ExtResource("2_c84n2")
 
 [node name="TrueCenterReference" type="Sprite3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.329)
+visible = false
 gi_mode = 0
 modulate = Color(1, 0, 0, 1)
 double_sided = false

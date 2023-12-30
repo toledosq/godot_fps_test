@@ -453,9 +453,8 @@ bus = &"Background"
 
 [node name="EnemyDummy" parent="." instance=ExtResource("12_w4syi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3, 0, 15.7)
-move_speed = 3.0
 max_health = 6
 
 [node name="EnemySpawn" parent="." instance=ExtResource("13_optrn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0.4, -12.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0.8, 11.9)
 enemy_scene = ExtResource("12_w4syi")
