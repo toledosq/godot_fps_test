@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://qvb6qyq6yh46"]
+[gd_scene load_steps=33 format=3 uid="uid://qvb6qyq6yh46"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_ei7uj"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/character.tscn" id="2_w3van"]
@@ -20,8 +20,21 @@ sky_material = SubResource("ProceduralSkyMaterial_n732w")
 background_mode = 2
 sky = SubResource("Sky_x8mi2")
 tonemap_mode = 2
+tonemap_exposure = 1.2
 ssao_enabled = true
-glow_enabled = true
+ssao_power = 2.0
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 1.0
+ssil_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 0.4
+sdfgi_cascade0_distance = 25.6
+sdfgi_max_distance = 409.6
+glow_mix = 0.125
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.792157, 0.815686, 0.780392, 1)
+volumetric_fog_length = 500.0
+volumetric_fog_sky_affect = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrcli"]
 albedo_color = Color(0, 0.364706, 1, 1)
@@ -124,6 +137,9 @@ top_radius = 5.0
 bottom_radius = 5.0
 height = 10.0
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_ls0i7"]
+height = 4.0
+
 [node name="Docks" type="Node3D"]
 script = ExtResource("1_ei7uj")
 
@@ -139,7 +155,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 1.5, 9.1)
 mesh = SubResource("CapsuleMesh_dbgxn")
 
 [node name="Ground" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.25, -7, -34.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.25, -6.5, -34.9)
 size = Vector3(500, 5, 500)
 material = SubResource("StandardMaterial3D_8snrr")
 
@@ -311,3 +327,7 @@ transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 
 
 [node name="UziWorldModel" parent="." instance=ExtResource("8_0hq6q")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -105.3, 1, 38.1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3, -1.5, 1.4)
+mesh = SubResource("CylinderMesh_ls0i7")
