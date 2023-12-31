@@ -58,6 +58,8 @@ MarginContainer/constants/margin_top = 10
 [node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "CAMERA_ANIMATION", "WEAPON_MANAGER")]
 collision_layer = 2
 collision_mask = 13
+floor_max_angle = 1.0472
+floor_snap_length = 0.2
 script = ExtResource("1_0t4e8")
 base_speed = 4.0
 sprint_speed = 8.0
@@ -83,10 +85,11 @@ cull_mask = 524289
 script = ExtResource("2_c84n2")
 
 [node name="TrueCenterReference" type="Sprite3D" parent="Head/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.794721)
 visible = false
 gi_mode = 0
 modulate = Color(1, 0, 0, 1)
+pixel_size = 0.0025
 double_sided = false
 texture = ExtResource("5_rpbxq")
 

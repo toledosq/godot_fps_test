@@ -242,3 +242,7 @@ func headbob_animation(moving) -> void:
 		CAMERA_ANIMATION.speed_scale = speed / base_speed
 	else:
 		CAMERA_ANIMATION.play("RESET")
+
+
+func on_death():
+	EventBus.player_died.emit()

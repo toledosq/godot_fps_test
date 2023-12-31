@@ -48,6 +48,7 @@ radius = 10.0
 
 [node name="EnemyDummy" type="CharacterBody3D"]
 collision_layer = 4
+floor_max_angle = 0.837758
 script = ExtResource("1_hmp62")
 move_speed = 3.0
 max_health = 5

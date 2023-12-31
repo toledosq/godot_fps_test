@@ -1,16 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bossktnjsp08j"]
+[gd_scene load_steps=4 format=3 uid="uid://bossktnjsp08j"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_li3bs"]
-[ext_resource type="PackedScene" uid="uid://cs4drhmc1bql5" path="res://test_world.tscn" id="2_2q06l"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/character.tscn" id="3_tos0v"]
+[ext_resource type="PackedScene" uid="uid://c2a1f3xv0lxaq" path="res://levels/horde_test_world.tscn" id="2_rji3t"]
 [ext_resource type="PackedScene" uid="uid://bb61jvff2a6lg" path="res://ui/ui.tscn" id="4_qtol8"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_li3bs")
-current_level = ExtResource("2_2q06l")
-
-[node name="test_world" parent="." instance=ExtResource("2_2q06l")]
-
-[node name="Character" parent="." instance=ExtResource("3_tos0v")]
+level_override = ExtResource("2_rji3t")
 
 [node name="UI" parent="." instance=ExtResource("4_qtol8")]

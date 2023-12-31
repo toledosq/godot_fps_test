@@ -1,6 +1,6 @@
 [gd_scene load_steps=47 format=3 uid="uid://cs4drhmc1bql5"]
 
-[ext_resource type="Script" path="res://test_world.gd" id="1_774bg"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_2xnt0"]
 [ext_resource type="Texture2D" uid="uid://cjaicr2d6c32x" path="res://assets/prototype/texture_01.png" id="2_6rxpf"]
 [ext_resource type="Environment" uid="uid://big1w54uuerqs" path="res://resources/environments/outdoor_environment.tres" id="3_5c8xm"]
 [ext_resource type="PackedScene" uid="uid://dkp5f87vy41m6" path="res://objects/ammo_crate.tscn" id="3_8b7kh"]
@@ -134,7 +134,7 @@ albedo_texture = ExtResource("2_6rxpf")
 uv1_triplanar = true
 
 [node name="test_world" type="Node3D" node_paths=PackedStringArray("background_noise_player")]
-script = ExtResource("1_774bg")
+script = ExtResource("1_2xnt0")
 background_noise_player = NodePath("AudioStreamPlayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
