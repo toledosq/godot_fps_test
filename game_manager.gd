@@ -2,7 +2,10 @@ extends Node
 
 @export var level_override: PackedScene
 
-var current_level: Level
+var current_level: Level:
+	set(val):
+		current_level = val
+		Globals.current_level = current_level
 
 
 func _ready():

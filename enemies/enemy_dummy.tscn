@@ -44,7 +44,7 @@ material = SubResource("StandardMaterial3D_j7xp6")
 size = Vector3(0.05, 0.05, 2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hbbuf"]
-radius = 10.0
+radius = 30.0
 
 [node name="EnemyDummy" type="CharacterBody3D"]
 collision_layer = 4

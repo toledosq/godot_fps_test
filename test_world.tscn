@@ -457,4 +457,3 @@ max_health = 6
 
 [node name="EnemySpawn" parent="." instance=ExtResource("13_optrn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0.8, 11.9)
-enemy_scene = ExtResource("12_w4syi")

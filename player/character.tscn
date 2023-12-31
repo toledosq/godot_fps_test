@@ -101,7 +101,8 @@ target_position = Vector3(0, 0, -2)
 script = ExtResource("2_hcpux")
 player_camera = NodePath("..")
 starting_weapons = Array[Resource("res://weapons/weapon_resources/weapon_resource.gd")]([ExtResource("4_pt35r")])
-ammo_reserve_current = 40
+ammo_reserve_MAX = 300
+ammo_reserve_current = 150
 
 [node name="FPSRig" type="Node3D" parent="Head/Camera"]
 unique_name_in_owner = true

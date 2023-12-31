@@ -1,10 +1,9 @@
-[gd_scene load_steps=71 format=3 uid="uid://c2a1f3xv0lxaq"]
+[gd_scene load_steps=70 format=3 uid="uid://c2a1f3xv0lxaq"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_p7xso"]
 [ext_resource type="Script" path="res://levels/KillArea.gd" id="5_jsglm"]
 [ext_resource type="PackedScene" uid="uid://bse67vci7xaow" path="res://enemies/enemy_spawn.tscn" id="6_pvo7c"]
 [ext_resource type="PackedScene" uid="uid://vvuap4jcqk2u" path="res://assets/world/blockDirt.glb" id="7_fviy4"]
-[ext_resource type="PackedScene" uid="uid://b4kioekv88duy" path="res://enemies/enemy_dummy.tscn" id="7_niw65"]
 [ext_resource type="PackedScene" uid="uid://b3kf6wwm26ab5" path="res://weapons/weapon_scenes/uzi_world_model.tscn" id="7_ul6jv"]
 [ext_resource type="PackedScene" uid="uid://ct025v4x41r4t" path="res://assets/world/blockDirtHalf.glb" id="8_1frls"]
 [ext_resource type="PackedScene" uid="uid://cew783wh26t6g" path="res://weapons/weapon_scenes/shotgun_world_model.tscn" id="8_v6anf"]
@@ -1437,19 +1436,15 @@ shape = SubResource("BoxShape3D_d14px")
 
 [node name="EnemySpawn" parent="." instance=ExtResource("6_pvo7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 1.8, 10.6)
-enemy_scene = ExtResource("7_niw65")
 
 [node name="EnemySpawn2" parent="." instance=ExtResource("6_pvo7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, 1.8, 13.6)
-enemy_scene = ExtResource("7_niw65")
 
 [node name="EnemySpawn3" parent="." instance=ExtResource("6_pvo7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1, 1.8, 13.6)
-enemy_scene = ExtResource("7_niw65")
 
 [node name="EnemySpawn4" parent="." instance=ExtResource("6_pvo7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9, 3.4, 3.1)
-enemy_scene = ExtResource("7_niw65")
 
 [node name="UziWorldModel" parent="." instance=ExtResource("7_ul6jv")]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -9.45315, 6.2, 1)

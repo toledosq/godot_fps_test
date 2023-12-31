@@ -30,6 +30,10 @@ DrawLine3d="*res://globals/DrawLine3D.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/csg_mesher/plugin.cfg")
+
 [input]
 
 move_forward={

@@ -2,7 +2,7 @@ class_name EnemySpawn extends Marker3D
 
 signal enemy_spawned()
 
-@export var enemy_scene: PackedScene
+@export var enemy_scene: PackedScene = preload("res://enemies/enemy_dummy.tscn")
 
 
 func _ready():
