@@ -426,12 +426,11 @@ animation_player = NodePath("AnimationPlayer")
 fire_audio_player = NodePath("FireAudioStreamPlayer")
 reload_audio_player = NodePath("ReloadAudioStreamPlayer")
 muzzle_marker = NodePath("Marker3D")
-player_camera_position = Vector3(0.0803904, -0.276965, -0.161565)
-player_camera_rotation = Vector3(0.0285361, 0, 0)
-ads_position = Vector3(0, -0.22, -0.159619)
+player_camera_position = Vector3(0.0546047, -0.24144, -0.161565)
+player_camera_rotation = Vector3(0.0926769, 0, 0)
+ads_position = Vector3(0, -0.232494, -0.154068)
 
 [node name="ShotgunModel" type="Node3D" parent="." node_paths=PackedStringArray("meshes_with_shader")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_wqwpt")
 meshes_with_shader = [NodePath("Body_lowpoly"), NodePath("Stock_lowpoly"), NodePath("Barrel_lowpoly"), NodePath("ForendSlider_lowpoly"), NodePath("Trigger_lowpoly"), NodePath("Forend_lowpoly")]
 viewmodelFOV = 40.0

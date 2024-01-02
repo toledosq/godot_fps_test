@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://sah1757ioacl"]
+[gd_scene load_steps=23 format=3 uid="uid://sah1757ioacl"]
 
 [ext_resource type="Script" path="res://weapons/weapon_resources/weapon.gd" id="1_ooje1"]
 [ext_resource type="ArrayMesh" uid="uid://rckjj0k0wp57" path="res://weapons/weapon_meshes/ak74m_default_mesh.tres" id="2_ptfwd"]
@@ -3502,15 +3502,46 @@ _data = {
 "Rig|AK_Walk": SubResource("Animation_7i3et")
 }
 
+[sub_resource type="CurveTexture" id="CurveTexture_31hl2"]
+
+[sub_resource type="Curve" id="Curve_jda1m"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501393, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uvjic"]
+curve = SubResource("Curve_jda1m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7f0et"]
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_uvjic")
+alpha_curve = SubResource("CurveTexture_31hl2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_af40h"]
+transparency = 1
+shading_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 0, 0.321569)
+emission_enabled = true
+emission = Color(0.827451, 0.623529, 0, 1)
+emission_energy_multiplier = 16.0
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vpgri"]
+material = SubResource("StandardMaterial3D_af40h")
+size = Vector3(0.01, 0.01, 0.01)
+
 [node name="AK74M_Player_Model" type="Node3D" node_paths=PackedStringArray("animation_player", "fire_audio_player", "reload_audio_player", "muzzle_marker")]
 script = ExtResource("1_ooje1")
 animation_player = NodePath("AK74M_Model/AnimationPlayer")
 fire_audio_player = NodePath("FireAudioPlayer")
 reload_audio_player = NodePath("ReloadAudioPlayer")
-muzzle_marker = NodePath("Marker3D")
-player_camera_position = Vector3(0.0652911, -0.513, -0.19533)
+muzzle_marker = NodePath("Muzzle/Marker3D")
+player_camera_position = Vector3(0.028262, -0.408668, -0.23236)
 player_camera_rotation = Vector3(0.0122173, -0.0488692, -0.0802851)
-ads_position = Vector3(-0.11562, -0.379772, -0.0109219)
+ads_position = Vector3(-0.11562, -0.380444, -0.118167)
 
 [node name="AK74M_Model" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
@@ -4137,7 +4168,6 @@ bones/84/rotation = Quaternion(-5.42101e-20, 5.29396e-23, 2.58494e-26, 1)
 bones/84/scale = Vector3(1, 1, 1)
 
 [node name="Object_11" type="MeshInstance3D" parent="AK74M_Model/Sketchfab_model/810f0276179d4425a118b331d5f38189_fbx/Object_2/RootNode/Rig/Object_8/Skeleton3D"]
-visible = false
 mesh = ExtResource("2_ptfwd")
 skin = SubResource("Skin_nbe3p")
 
@@ -4167,9 +4197,6 @@ libraries = {
 }
 speed_scale = 1.2
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0508721, 0.243, -2.084)
-
 [node name="FireAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_npsla")
 volume_db = -5.0
@@ -4180,3 +4207,20 @@ bus = &"SFX"
 stream = ExtResource("9_0mapj")
 volume_db = -5.0
 bus = &"SFX"
+
+[node name="Muzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0508721, 0.243, -2.084)
+
+[node name="Marker3D" type="Marker3D" parent="Muzzle"]
+
+[node name="ShootParticles" type="GPUParticles3D" parent="Muzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.038559)
+visible = false
+cast_shadow = 0
+emitting = false
+amount = 1
+one_shot = true
+speed_scale = 8.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7f0et")
+draw_pass_1 = SubResource("BoxMesh_vpgri")
