@@ -6,10 +6,9 @@ enum { NONE, IDLE, ALERT, STUNNED, ATTACKING }
 var state = NONE
 var state_locked := false
 
-@export var move_speed: float = 2.0
+@export var move_speed: float = 1.2
 @export var turn_speed: float = 2.0
 @export var alert_cooldown: float = 2.0
-@export var max_health: int = 10
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var ray_cast = $RayCast
@@ -21,7 +20,7 @@ var state_locked := false
 @onready var sight_range = $SightRange
 @onready var alert_range = $AlertRange
 
-@onready var health := max_health
+@onready var health_component = $HealthComponent
 
 var target = null
 var target_last_position: Vector3
@@ -31,6 +30,8 @@ var alive := false
 func _ready():
 	Globals.enemy_count += 1
 	alive = true
+	# Allow for sprinters
+	move_speed *= 1 if randf() < 0.8 else 1.5
 	enter_idle_state()
 
 
@@ -70,7 +71,7 @@ func navigate():
 	var new_velocity: Vector3
 	
 	# If stunned, stop moving
-	if state == STUNNED:
+	if state == STUNNED or global_transform.origin.distance_to(target_last_position) < 2:
 		new_velocity = Vector3.ZERO
 	# Otherwise, find next nav point and set velocity
 	else:
@@ -95,7 +96,9 @@ func track_target():
 		# Get target last position
 		target_last_position = target.global_transform.origin
 
-	nav_agent.set_target_position(target_last_position)
+	if global_transform.origin.distance_to(target_last_position) > 2:
+		nav_agent.set_target_position(target_last_position)
+	
 	# Look at target
 	eyes.look_at(target_last_position, Vector3.UP)
 	rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
@@ -105,15 +108,13 @@ func hit(damage):
 	$HitTimer.start()
 	if alive:
 		mesh.get_surface_override_material(0).set_shader_parameter("active",true)
-		health -= damage
-		if health <= 0:
-			on_death()
+		health_component.on_hit(damage)
 
 
 func on_death():
 	Globals.enemy_count -= 1
 	alive = false
-	print("%s died" % self.name)
+	print("enemy %s died" % self.name)
 	queue_free()
 
 

@@ -12,7 +12,7 @@
 script = ExtResource("1_op1k0")
 weapon_name = "AK74M"
 weapon_range = 2000
-weapon_damage = 2
+weapon_damage = 22
 rate_of_fire = 600
 projectile_velocity = 200
 weapon_player_model = ExtResource("6_1abhb")

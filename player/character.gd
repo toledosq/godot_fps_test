@@ -52,6 +52,7 @@ var is_ads : bool = false
 # Get the gravity from the project settings to be synced with RigidBody nodes
 @onready var interact_ray = %InteractRay
 @onready var reticle_1 = $UserInterface/Reticle_1
+@onready var health_component = $HealthComponent
 
 
 func _ready() -> void:
@@ -146,6 +147,7 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("weapon_fire"):
 		WEAPON_MANAGER.fire_weapon()
+		CAMERA.apply_recoil()
 	
 	if Input.is_action_just_pressed("weapon_reload"):
 		WEAPON_MANAGER.reload_weapon()
@@ -242,6 +244,11 @@ func headbob_animation(moving) -> void:
 		CAMERA_ANIMATION.speed_scale = speed / base_speed
 	else:
 		CAMERA_ANIMATION.play("RESET")
+
+
+func hit(damage):
+	print("Player hit for %s damage" % damage)
+	health_component.on_hit(damage)
 
 
 func on_death():

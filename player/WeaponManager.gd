@@ -340,13 +340,12 @@ func get_camera_collision(distance) -> Vector3:
 	
 	# Detect if the ray is colliding with anything
 	if not intersection.is_empty():
-		# return the position of the collision
 		var col_point = intersection.position
 		create_hit_indicator(col_point)
-		return col_point
-	# If no collision, return the ray's end point for next tick
-	else:
-		return ray_end
+		# TODO: Disabling for debug due to bullet inheriting oblique angles close to colliders
+		#return col_point
+		#else:
+	return ray_end
 
 
 func create_hit_indicator(_position: Vector3) -> void:

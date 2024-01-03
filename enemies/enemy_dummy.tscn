@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4kioekv88duy"]
+[gd_scene load_steps=12 format=3 uid="uid://b4kioekv88duy"]
 
 [ext_resource type="Script" path="res://enemies/dummy_state_machine.gd" id="1_hmp62"]
 [ext_resource type="Shader" path="res://resources/shaders/hit_flash.gdshader" id="2_3f1l1"]
+[ext_resource type="Script" path="res://player/health_component.gd" id="3_tm5se"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a4dlr"]
 
@@ -48,10 +49,10 @@ radius = 30.0
 
 [node name="EnemyDummy" type="CharacterBody3D"]
 collision_layer = 4
+collision_mask = 15
 floor_max_angle = 0.837758
 script = ExtResource("1_hmp62")
 move_speed = 3.0
-max_health = 5
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -110,6 +111,9 @@ one_shot = true
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_tm5se")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="SightRange" to="." method="_on_sight_range_body_entered"]
