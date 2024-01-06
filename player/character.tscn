@@ -1,24 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=14 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://player/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_c84n2"]
 [ext_resource type="Script" path="res://player/WeaponManager.gd" id="2_hcpux"]
 [ext_resource type="PackedScene" uid="uid://3mij3cjhkwsm" path="res://addons/fpc/reticles/reticle_1.tscn" id="2_uuexm"]
-[ext_resource type="Curve" uid="uid://763d20qh4fo6" path="res://weapons/curves/recoil_curve.tres" id="3_g10ve"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="Resource" uid="uid://ckl47hwbkdvaw" path="res://weapons/weapon_resources/ak74m.tres" id="4_pt35r"]
 [ext_resource type="Texture2D" uid="uid://di40ln3ei6w0r" path="res://assets/prototype/crosshair162.png" id="5_rpbxq"]
 [ext_resource type="Script" path="res://player/health_component.gd" id="8_l3nbn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy03j"]
-
-[sub_resource type="Curve" id="Curve_5fg57"]
-
-[sub_resource type="Curve" id="Curve_vcj58"]
-_data = [Vector2(0, 0.232996), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_fpnw8"]
 
 [sub_resource type="Animation" id="Animation_gh776"]
 resource_name = "RESET"
@@ -93,10 +84,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 unique_name_in_owner = true
 cull_mask = 524289
 script = ExtResource("2_c84n2")
-recoil_rotation_x = ExtResource("3_g10ve")
-recoil_rotation_y = SubResource("Curve_5fg57")
-recoil_rotation_z = SubResource("Curve_vcj58")
-recoil_position_z = SubResource("Curve_fpnw8")
 
 [node name="TrueCenterReference" type="Sprite3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.794721)

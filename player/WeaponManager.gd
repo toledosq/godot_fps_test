@@ -103,7 +103,7 @@ func apply_recoil() -> void:
 	# Rotate
 	target_rot.z = current_weapon_resource.recoil_rotation_z.sample(0)
 	target_rot.x = current_weapon_resource.recoil_rotation_x.sample(0)
-	#target_rot.y = current_weapon_resource.recoil_rotation_y.sample(0) * 0.1
+	target_rot.y = current_weapon_resource.recoil_rotation_y.sample(0) * 0.1
 	
 	# Move gun backwards
 	target_pos.z = current_weapon_resource.recoil_position_z.sample(0)

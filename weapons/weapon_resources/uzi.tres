@@ -10,9 +10,9 @@
 script = ExtResource("3_ijded")
 weapon_name = "UZI"
 weapon_range = 2000
-weapon_damage = 1
+weapon_damage = 18
 rate_of_fire = 900
-projectile_velocity = 150
+projectile_velocity = 200
 weapon_player_model = ExtResource("4_1370l")
 weapon_world_model = ExtResource("5_iuua3")
 projectile_scene = ExtResource("1_u8vg1")

@@ -147,7 +147,6 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("weapon_fire"):
 		WEAPON_MANAGER.fire_weapon()
-		CAMERA.apply_recoil()
 	
 	if Input.is_action_just_pressed("weapon_reload"):
 		WEAPON_MANAGER.reload_weapon()
