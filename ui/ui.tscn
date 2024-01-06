@@ -267,8 +267,14 @@ script = ExtResource("3_l37h1")
 layout_mode = 0
 
 [node name="ContainerInventory" parent="InventoryInterface" instance=ExtResource("4_csfox")]
-visible = false
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_right = 8.0
+offset_bottom = 16.0
+grow_horizontal = 2
 
 [node name="GrabbedSlot" parent="InventoryInterface" instance=ExtResource("5_0pct4")]
 visible = false
