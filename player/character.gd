@@ -19,7 +19,6 @@ signal toggle_inventory()
 @export var WEAPON_CAMERA : WeaponCamera
 
 @export_group("Controls")
-# We are using UI controls because they are built into Godot Engine so they can be used right away
 @export var JUMP : String = "jump"
 @export var LEFT : String = "move_left"
 @export var RIGHT : String = "move_right"
@@ -144,43 +143,49 @@ func _process(_delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	if Input.is_action_just_pressed("weapon_next"):
-		WEAPON_MANAGER.equip_weapon(0)
-	
-	if Input.is_action_just_pressed("weapon_prev"):
-		WEAPON_MANAGER.equip_weapon(1)
-	
-	if Input.is_action_pressed("weapon_fire"):
-		WEAPON_MANAGER.fire_weapon()
-	
-	if Input.is_action_just_pressed("weapon_reload"):
-		WEAPON_MANAGER.reload_weapon()
-	
-	if Input.is_action_pressed("weapon_ads"):
-		is_ads = true
-		WEAPON_MANAGER.ads = true
-		reticle_1.hide()
-	
-	if Input.is_action_just_released("weapon_ads"):
-		is_ads = false
-		WEAPON_MANAGER.ads = false
-		reticle_1.show()
-	
-	if Input.is_action_just_pressed("interact"):
-		interact()
-	
+			
+		
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
+	
+	if Input.is_action_just_released("weapon_ads"):
+			is_ads = false
+			WEAPON_MANAGER.ads = false
+			reticle_1.show()
+	
+	# Only do this if the player is controlling character
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if Input.is_action_just_pressed("weapon_next"):
+			WEAPON_MANAGER.equip_weapon(0)
 		
-	if Input.is_action_just_pressed("weapon_drop"):
-		WEAPON_MANAGER.drop_weapon()
+		if Input.is_action_just_pressed("weapon_prev"):
+			WEAPON_MANAGER.equip_weapon(1)
 		
-	if Input.is_action_just_pressed("spawn_enemy"):
-		EventBus.spawn_enemy.emit()
+		if Input.is_action_just_pressed("weapon_reload"):
+			WEAPON_MANAGER.reload_weapon()
+		
+		if Input.is_action_pressed("weapon_ads"):
+			is_ads = true
+			WEAPON_MANAGER.ads = true
+			reticle_1.hide()
+		
+		if Input.is_action_just_pressed("interact"):
+			interact()
+		
+		if Input.is_action_just_pressed("weapon_drop"):
+			WEAPON_MANAGER.drop_weapon()
+			
+		if Input.is_action_just_pressed("spawn_enemy"):
+			EventBus.spawn_enemy.emit()
+		
+		if Input.is_action_pressed("weapon_fire"):
+			WEAPON_MANAGER.fire_weapon()
+
 
 
 func _unhandled_input(event) -> void:
+
+		
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		HEAD.rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		HEAD.rotation_degrees.x -= event.relative.y * mouse_sensitivity
