@@ -50,7 +50,12 @@ func update_enemy_counter(count):
 func update_weapon_stack(weapon_stack: Array[WeaponResource]):
 	var weapon_stack_string: String = ""
 	for weapon in weapon_stack:
-		weapon_stack_string += (weapon.weapon_name + "\n")
+		var weapon_name
+		if not weapon:
+			weapon_name = 'None'
+		else:
+			weapon_name = weapon.weapon_name
+		weapon_stack_string += (weapon_name + "\n")
 	
 	add_debug_property("Weapon Stack", weapon_stack_string, 1)
 

@@ -39,3 +39,6 @@ recoil_rotation_z = ExtResource("2_0646f")
 recoil_position_z = ExtResource("2_0646f")
 recoil_amplitude = Vector3(0, 1, 4)
 lerp_speed = 1.0
+name = ""
+description = ""
+stackable = false

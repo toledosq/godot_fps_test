@@ -3,7 +3,8 @@ class_name WeaponManager extends Node3D
 enum STATES { NONE, READY, NOTREADY }
 var state: STATES
 
-const ADS_LERP = 20
+const ADS_LERP := 20
+const MAX_WEAPON_STACK_SIZE := 2
 
 @export_category("Camera")
 @export var player_camera: Camera3D
@@ -116,6 +117,8 @@ func apply_recoil() -> void:
 
 func receive_weapon(weapon_resource: WeaponResource, fast := false) -> void:
 	weapon_resource = weapon_resource.duplicate(true)
+	if weapons_array.size() >= MAX_WEAPON_STACK_SIZE:
+		drop_weapon()
 	weapons_array.push_back(weapon_resource)
 	EventBus.weapon_stack_changed.emit(weapons_array)
 	equip_weapon(max(len(weapons_array) - 1, 0), fast)

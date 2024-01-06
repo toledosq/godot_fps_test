@@ -208,7 +208,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="DebugPanel" type="Panel" parent="MarginContainer"]
-visible = false
 custom_minimum_size = Vector2(250, 300)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -267,6 +266,7 @@ script = ExtResource("3_l37h1")
 layout_mode = 0
 
 [node name="ContainerInventory" parent="InventoryInterface" instance=ExtResource("4_csfox")]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

@@ -1,4 +1,4 @@
-class_name WeaponResource extends Resource
+class_name WeaponResource extends ItemData
 
 @export_category("Weapon Properties")
 @export var weapon_name: String
