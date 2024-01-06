@@ -129,13 +129,10 @@ inventory={
 3d_render/layer_1="PlayerView"
 3d_render/layer_2="WeaponView"
 3d_render/layer_20="debug"
+3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
-3d_physics/layer_3="enemy"
-
-[navigation]
-
-3d/default_cell_size=0.1
-3d/default_cell_height=0.1
+3d_physics/layer_3="Enemy"
+3d_physics/layer_4="Projectiles"
 
 [physics]
 
@@ -143,8 +140,7 @@ common/physics_ticks_per_second=120
 
 [rendering]
 
-driver/threads/thread_model=2
-lights_and_shadows/directional_shadow/size=16384
+lights_and_shadows/directional_shadow/size=8192
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
 textures/default_filters/anisotropic_filtering_level=4

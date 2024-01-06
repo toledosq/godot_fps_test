@@ -9,5 +9,5 @@ class_name ItemData extends Resource
 
 
 # Placeholder function - children will define behavior
-func use(target) -> void:
+func use(_target) -> void:
 	pass
