@@ -17,7 +17,7 @@ func _physics_process(delta) -> void:
 	sprite_3d.rotate_y(delta)
 
 
-func _on_area_3d_body_entered(body) -> void:
+func _on_pickup_area_body_entered(body) -> void:
 	# Attempt to pick up slot data (returns bool)
 	if body.inventory_data.pick_up_slot_data(slot_data):
 		# If successful, just delete pickup

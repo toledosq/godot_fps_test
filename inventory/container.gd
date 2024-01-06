@@ -1,4 +1,4 @@
-extends StaticBody3D
+class_name ContainerObject extends StaticBody3D
 
 # Signal thrown when container interacted with
 signal toggle_inventory(external_inventory_owner)
@@ -7,5 +7,5 @@ signal toggle_inventory(external_inventory_owner)
 @export var inventory_data: InventoryData
 
 
-func player_interact() -> void:
+func interact() -> void:
 	toggle_inventory.emit(self)

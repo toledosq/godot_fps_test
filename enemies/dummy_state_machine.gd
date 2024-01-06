@@ -31,7 +31,7 @@ func _ready():
 	Globals.enemy_count += 1
 	alive = true
 	# Allow for sprinters
-	move_speed *= 1 if randf() < 0.8 else 1.5
+	move_speed *= 1.0 if randf() < 0.8 else 1.5
 	enter_idle_state()
 
 

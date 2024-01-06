@@ -82,7 +82,7 @@ func use_slot_data(index: int) -> void:
 	print(slot_data.item_data.name)
 	
 	# Tell player manager item was used
-	PlayerManager.use_slot_data(slot_data)
+	InventoryManager.use_slot_data(slot_data)
 	
 	# Alert inventory panel of update
 	inventory_updated.emit(self)

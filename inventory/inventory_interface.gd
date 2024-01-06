@@ -11,8 +11,8 @@ var container
 @onready var player_inventory = $PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
 @onready var container_inventory = $ContainerInventory
-@onready var armor_inventory = $ArmorInventory
-@onready var weapon_inventory = $WeaponInventory
+#@onready var armor_inventory = $ArmorInventory
+#@onready var weapon_inventory = $WeaponInventory
 
 
 func _physics_process(_delta):
@@ -21,7 +21,7 @@ func _physics_process(_delta):
 		grabbed_slot.global_position = get_global_mouse_position() + Vector2(5,5)
 	
 	# If player gets too far from a container, force close inventory interface
-	if container and container.global_position.distance_to(PlayerManager.get_global_position()) > 4:
+	if container and container.global_position.distance_to(InventoryManager.get_player_global_position()) > 4:
 		force_close.emit()
 
 
@@ -36,14 +36,14 @@ func set_armor_inventory_data(inventory_data: InventoryData) -> void:
 	# Connect to the inventory data's interaction signal
 	inventory_data.inventory_interact.connect(on_inventory_interact)
 	# Call armor's set_inventory_data function
-	armor_inventory.set_inventory_data(inventory_data)
+	# armor_inventory.set_inventory_data(inventory_data)
 
 
 func set_weapon_inventory_data(inventory_data: InventoryData) -> void:
 	# Connect to the inventory data's interaction signal
 	inventory_data.inventory_interact.connect(on_inventory_interact)
 	# Call armor's set_inventory_data function
-	weapon_inventory.set_inventory_data(inventory_data)
+	# weapon_inventory.set_inventory_data(inventory_data)
 	weapon_inventory_updated.emit()
 
 

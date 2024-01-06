@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb61jvff2a6lg"]
+[gd_scene load_steps=13 format=3 uid="uid://bb61jvff2a6lg"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_glykk"]
 [ext_resource type="Texture2D" uid="uid://bph821uffcsx7" path="res://icon.svg" id="2_41l6c"]
+[ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3_l37h1"]
+[ext_resource type="PackedScene" uid="uid://dkh4b5at0xto1" path="res://inventory/inventory_panel.tscn" id="4_csfox"]
+[ext_resource type="PackedScene" uid="uid://qmbxn7vowtob" path="res://inventory/slot.tscn" id="5_0pct4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jl07"]
 
@@ -204,14 +207,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="HScrollBar" type="HScrollBar" parent="MarginContainer/CompassContainer"]
-custom_minimum_size = Vector2(800, 64)
-layout_mode = 2
-mouse_filter = 2
-max_value = 360.0
-value = 180.0
-
 [node name="DebugPanel" type="Panel" parent="MarginContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 300)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -255,3 +252,27 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_jeclx")
 }
+
+[node name="InventoryInterface" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1264.0
+offset_bottom = 704.0
+script = ExtResource("3_l37h1")
+
+[node name="PlayerInventory" parent="InventoryInterface" instance=ExtResource("4_csfox")]
+layout_mode = 0
+
+[node name="ContainerInventory" parent="InventoryInterface" instance=ExtResource("4_csfox")]
+visible = false
+layout_mode = 0
+
+[node name="GrabbedSlot" parent="InventoryInterface" instance=ExtResource("5_0pct4")]
+visible = false
+layout_mode = 0
+
+[connection signal="gui_input" from="InventoryInterface" to="InventoryInterface" method="_on_gui_input"]
+[connection signal="visibility_changed" from="InventoryInterface" to="InventoryInterface" method="_on_visibility_changed"]

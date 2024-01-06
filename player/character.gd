@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody3D
 
-# TODO: Add descriptions for each value
+signal toggle_inventory()
 
 @export_category("Character")
 @export var base_speed : float = 3.0
@@ -26,8 +26,8 @@ class_name Player extends CharacterBody3D
 @export var FORWARD : String = "move_forward"
 @export var BACKWARD : String = "move_backward"
 @export var PAUSE : String = "ui_cancel"
-@export var CROUCH : String = "jump"
-@export var SPRINT : String = "crouch"
+@export var CROUCH : String = "crouch"
+@export var SPRINT : String = "sprint"
 
 @export_group("Feature Settings")
 @export var immobile : bool = false
@@ -41,6 +41,11 @@ class_name Player extends CharacterBody3D
 @export var dynamic_fov : bool = true
 @export var continuous_jumping : bool = true
 @export var view_bobbing : bool = true
+
+@export_group("Inventory")
+@export var inventory_data: InventoryData
+#@export var armor_inventory_data: InventoryDataArmor
+#@export var weapon_inventory_data: InventoryDataWeapon
 
 # Member variables
 var speed : float = base_speed
@@ -61,6 +66,7 @@ func _ready() -> void:
 	
 	# Assign as player
 	Globals.current_player = self
+	InventoryManager.player = self
 	
 	# Connect to EventBus
 	EventBus.give_weapon_to_player.connect(receive_weapon)
@@ -163,6 +169,9 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		interact()
+	
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory.emit()
 		
 	if Input.is_action_just_pressed("weapon_drop"):
 		WEAPON_MANAGER.drop_weapon()
