@@ -3,8 +3,8 @@ extends RigidBody3D
 # Export slot for item assignment
 @export var slot_data: SlotData
 
-# World Sprite
 @onready var sprite_3d = $Sprite3D
+@onready var pickup_area = $PickupArea
 
 
 func _ready() -> void:

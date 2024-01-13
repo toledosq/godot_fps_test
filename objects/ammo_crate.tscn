@@ -58,6 +58,8 @@ shadow_mesh = SubResource("ArrayMesh_qnxcl")
 size = Vector3(1.62311, 1.05408, 1.16785)
 
 [node name="AmmoCrate" type="StaticBody3D"]
+collision_layer = 17
+collision_mask = 0
 script = ExtResource("1_1uq11")
 
 [node name="PlasticToolBox003_PlasticToolBox_0" type="MeshInstance3D" parent="."]

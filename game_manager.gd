@@ -41,10 +41,10 @@ func initialize_inventories() -> void:
 	inventory_interface.set_player_inventory_data(player.inventory_data)
 	
 	# Populate armor inventory
-	# inventory_interface.set_armor_inventory_data(player.armor_inventory_data)
+	inventory_interface.set_armor_inventory_data(player.armor_inventory_data)
 	
 	# Populate weapon inventory
-	# inventory_interface.set_weapon_inventory_data(player.weapon_inventory_data)
+	inventory_interface.set_weapon_inventory_data(player.weapon_inventory_data)
 	
 	# Connect to the interface's force_close signal
 	inventory_interface.force_close.connect(toggle_inventory_interface)

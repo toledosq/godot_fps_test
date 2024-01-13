@@ -21,6 +21,8 @@ const MAX_WEAPON_STACK_SIZE := 2
 @onready var camera = get_node("%Camera")
 
 var debug_bullet := preload("res://objects/debug/debug_bullet.tscn")
+# TODO: Instead of a modifiable array, the weapons should be stored in inventory slots
+# TODO: and the slot number used as the index
 var weapons_array: Array[WeaponResource] # Player weapons available
 var current_weapon_idx = null # Array index
 var current_weapon_resource: WeaponResource # Holds the weapon properties

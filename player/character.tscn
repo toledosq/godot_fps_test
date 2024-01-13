@@ -1,14 +1,31 @@
-[gd_scene load_steps=15 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=22 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://player/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_c84n2"]
 [ext_resource type="Script" path="res://player/WeaponManager.gd" id="2_hcpux"]
 [ext_resource type="Resource" uid="uid://c1okguy5gwtfy" path="res://inventory/resources/test_inv.tres" id="2_k2g3e"]
 [ext_resource type="PackedScene" uid="uid://3mij3cjhkwsm" path="res://addons/fpc/reticles/reticle_1.tscn" id="2_uuexm"]
+[ext_resource type="Script" path="res://inventory/inventory_data_weapon.gd" id="3_fe7vs"]
+[ext_resource type="Script" path="res://inventory/inventory_data_armor.gd" id="3_reacj"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
+[ext_resource type="Resource" uid="uid://b8vil6ayvibs8" path="res://items/items/default_weapon.tres" id="4_87vky"]
 [ext_resource type="Resource" uid="uid://ckl47hwbkdvaw" path="res://weapons/weapon_resources/ak74m.tres" id="4_pt35r"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="5_5pln8"]
 [ext_resource type="Texture2D" uid="uid://di40ln3ei6w0r" path="res://assets/prototype/crosshair162.png" id="5_rpbxq"]
 [ext_resource type="Script" path="res://player/health_component.gd" id="8_l3nbn"]
+
+[sub_resource type="Resource" id="Resource_3ekbe"]
+script = ExtResource("3_reacj")
+slot_datas = Array[ExtResource("5_5pln8")]([null])
+
+[sub_resource type="Resource" id="Resource_63ohn"]
+script = ExtResource("5_5pln8")
+item_data = ExtResource("4_87vky")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_og2cn"]
+script = ExtResource("3_fe7vs")
+slot_datas = Array[ExtResource("5_5pln8")]([SubResource("Resource_63ohn"), null])
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy03j"]
 
@@ -72,6 +89,8 @@ CAMERA = NodePath("Head/Camera")
 CAMERA_ANIMATION = NodePath("Head/camera_animation")
 WEAPON_MANAGER = NodePath("Head/Camera/WeaponManager")
 inventory_data = ExtResource("2_k2g3e")
+armor_inventory_data = SubResource("Resource_3ekbe")
+weapon_inventory_data = SubResource("Resource_og2cn")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -97,6 +116,7 @@ texture = ExtResource("5_rpbxq")
 [node name="InteractRay" type="RayCast3D" parent="Head/Camera"]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
+collision_mask = 16
 
 [node name="WeaponManager" type="Node3D" parent="Head/Camera" node_paths=PackedStringArray("player_camera")]
 script = ExtResource("2_hcpux")
@@ -112,7 +132,7 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_o0unb")
 }
-blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"headbob", 0.5, &"headbob", &"RESET", 0.5]
+blend_times = [&"headbob", &"RESET", 0.5, &"RESET", &"headbob", 0.5, &"RESET", &"RESET", 0.5]
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3

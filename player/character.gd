@@ -43,8 +43,8 @@ signal toggle_inventory()
 
 @export_group("Inventory")
 @export var inventory_data: InventoryData
-#@export var armor_inventory_data: InventoryDataArmor
-#@export var weapon_inventory_data: InventoryDataWeapon
+@export var armor_inventory_data: InventoryDataArmor
+@export var weapon_inventory_data: InventoryDataWeapon
 
 # Member variables
 var speed : float = base_speed
@@ -257,6 +257,12 @@ func headbob_animation(moving) -> void:
 		CAMERA_ANIMATION.speed_scale = speed / base_speed
 	else:
 		CAMERA_ANIMATION.play("RESET")
+
+
+func get_drop_position() -> Vector3:
+	# Get forward facing direction from camera
+	var direction = -CAMERA.global_transform.basis.z
+	return CAMERA.global_position + direction
 
 
 func hit(damage):

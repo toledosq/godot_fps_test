@@ -253,7 +253,6 @@ libraries = {
 }
 
 [node name="InventoryInterface" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 16.0
@@ -275,6 +274,21 @@ offset_left = -8.0
 offset_right = 8.0
 offset_bottom = 16.0
 grow_horizontal = 2
+
+[node name="WeaponInventory" parent="InventoryInterface" instance=ExtResource("4_csfox")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 450.0
+offset_right = 490.0
+offset_bottom = 40.0
+
+[node name="ArmorInventory" parent="InventoryInterface" instance=ExtResource("4_csfox")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 450.0
+offset_top = 100.0
+offset_right = 490.0
+offset_bottom = 140.0
 
 [node name="GrabbedSlot" parent="InventoryInterface" instance=ExtResource("5_0pct4")]
 visible = false
