@@ -10,6 +10,7 @@ class_name WeaponResource extends ItemData
 @export_category("Weapon Scenes")
 @export var weapon_player_model: PackedScene
 @export var weapon_world_model: PackedScene
+@export var weapon_mesh: ArrayMesh
 @export var projectile_scene: PackedScene
 
 @export_category("Weapon Ammo")

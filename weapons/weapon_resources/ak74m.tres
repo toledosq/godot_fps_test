@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=8 format=3 uid="uid://ckl47hwbkdvaw"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=9 format=3 uid="uid://ckl47hwbkdvaw"]
 
 [ext_resource type="Script" path="res://weapons/weapon_resources/weapon_resource.gd" id="1_op1k0"]
 [ext_resource type="AudioStream" uid="uid://q6aufvsxjqrk" path="res://assets/sfx/rifle_indoors.mp3" id="1_y44i2"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://4ee0oj5muhwm" path="res://weapons/projectiles/projectile.tscn" id="2_b0l7q"]
 [ext_resource type="AudioStream" uid="uid://bcbpmcn7ie6xp" path="res://assets/sfx/ak-reload.mp3" id="4_u8pte"]
 [ext_resource type="PackedScene" uid="uid://sah1757ioacl" path="res://weapons/weapon_scenes/ak_74m_player_model.tscn" id="6_1abhb"]
-[ext_resource type="PackedScene" uid="uid://dgebqvl7kflq0" path="res://weapons/weapon_scenes/ak_74m_world_model_test.tscn" id="7_5va37"]
+[ext_resource type="ArrayMesh" uid="uid://e1vrla66266" path="res://weapons/weapon_resources/ak74m_mesh.res" id="6_1oowx"]
+[ext_resource type="PackedScene" uid="uid://b12chmbhdv3mj" path="res://weapons/weapon_scenes/ak_74m_world_model.tscn" id="7_bgi7m"]
 
 [resource]
 script = ExtResource("1_op1k0")
@@ -16,7 +17,8 @@ weapon_damage = 22
 rate_of_fire = 600
 projectile_velocity = 200
 weapon_player_model = ExtResource("6_1abhb")
-weapon_world_model = ExtResource("7_5va37")
+weapon_world_model = ExtResource("7_bgi7m")
+weapon_mesh = ExtResource("6_1oowx")
 projectile_scene = ExtResource("2_b0l7q")
 ammo_type = 2
 magazine_size = 30

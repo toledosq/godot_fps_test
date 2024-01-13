@@ -8,8 +8,14 @@ extends RigidBody3D
 
 func _ready() -> void:
 	if slot_data.item_data is ItemDataWeapon:
-		var model = slot_data.item_data.weapon_resource.weapon_world_model.instantiate()
-		add_child(model)
+		# Create new MeshInstance3D to hold weapon mesh
+		var mesh = MeshInstance3D.new()
+		# Get mesh from weapon in slot
+		var model = slot_data.item_data.weapon_resource.weapon_mesh
+		# Set MeshInstance3D mesh to weapon mesh and add as child
+		mesh.mesh = model
+		add_child(mesh)
+		# Generate collision shape from mesh
 		collision_shape_3d.make_convex_from_siblings()
 	else:
 		sprite_3d.texture = slot_data.item_data.texture
