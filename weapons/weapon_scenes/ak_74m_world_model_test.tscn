@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgebqvl7kflq0"]
+
+[ext_resource type="ArrayMesh" uid="uid://cxl4gulwswiq4" path="res://assets/weapons/ak74m/ak_74m_world_model.tres" id="2_tmb3w"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = ExtResource("2_tmb3w")

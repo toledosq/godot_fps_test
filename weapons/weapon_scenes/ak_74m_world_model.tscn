@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b12chmbhdv3mj"]
+[gd_scene load_steps=3 format=3 uid="uid://b12chmbhdv3mj"]
 
-[ext_resource type="Script" path="res://weapons/weapon_resources/weapon_pickup.gd" id="1_dasmj"]
 [ext_resource type="ArrayMesh" uid="uid://cxl4gulwswiq4" path="res://assets/weapons/ak74m/ak_74m_world_model.tres" id="2_8fgnf"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7h314"]
 points = PackedVector3Array(-0.0244325, -0.187766, 0.255448, 0.0159048, -0.171881, 0.2563, -0.013707, 0.134178, -0.431466, -0.0673659, 0.155594, 0.2661, -0.0244325, 0.112723, 0.952877, 0.01848, -0.0267744, -0.420677, -0.0244325, -0.0267744, -0.420677, 0.0292055, 0.144867, 0.952877, 0.0399519, 0.134178, -0.0665684, -0.013707, 0.20931, 0.83475, 0.0399519, 0.101957, 0.544963, 0.01848, 0.20931, 0.83475, -0.013707, 0.175491, -0.0134241, 0.0399519, 0.0590074, -0.0557799, 0.01848, 0.123412, -0.431466, 0.00774399, 0.101957, 0.952877, -0.0673659, 0.134178, 0.2661, -0.0244325, 0.112723, -0.431466, 0.0152566, 0.170086, -0.00425223, 0.0399519, 0.155594, 0.56654, -0.0244325, -0.187766, 0.276615, -0.0244325, 0.144867, 0.952877, 0.0292055, 0.123412, 0.952877, -0.0351684, 0.166322, -0.0557799, -0.002992, -0.037502, -0.420677, 0.015764, -0.171013, 0.275728, -0.013707, 0.101957, 0.952877, 0.00774399, -0.0267744, -0.431466, 0.01848, 0.112723, 0.963666, 0.0399519, 0.0911901, 0.459064, -0.013707, -0.0267744, -0.431466, 0.0399519, 0.0697349, -0.0665684)
 
 [node name="AK74M_World_Model" type="RigidBody3D"]
-script = ExtResource("1_dasmj")
-weapon_resource_id = "AK74M"
+collision_layer = 17
+collision_priority = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_8fgnf")
