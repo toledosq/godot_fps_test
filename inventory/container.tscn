@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8o16o343jvb7"]
+
+[ext_resource type="Script" path="res://inventory/container.gd" id="1_insd2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ryohq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4ucb"]
+
+[node name="Container" type="StaticBody3D" groups=["external_inventory"]]
+collision_layer = 17
+collision_mask = 0
+script = ExtResource("1_insd2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ryohq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_x4ucb")

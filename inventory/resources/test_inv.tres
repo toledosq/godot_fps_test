@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=9 format=3 uid="uid://c1okguy5gwtfy"]
+
+[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="1_0abjr"]
+[ext_resource type="Resource" uid="uid://ddteifllg3de8" path="res://items/items/item_bluebook.tres" id="2_8cwio"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="2_mf74f"]
+[ext_resource type="Resource" uid="uid://chanp0nymieui" path="res://items/items/item_apple.tres" id="4_qkuur"]
+[ext_resource type="Resource" uid="uid://b8vil6ayvibs8" path="res://items/items/default_weapon.tres" id="5_xl4df"]
+
+[sub_resource type="Resource" id="Resource_tjtbo"]
+script = ExtResource("2_mf74f")
+item_data = ExtResource("2_8cwio")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_wnglo"]
+script = ExtResource("2_mf74f")
+item_data = ExtResource("4_qkuur")
+quantity = 4
+
+[sub_resource type="Resource" id="Resource_yjis8"]
+script = ExtResource("2_mf74f")
+item_data = ExtResource("5_xl4df")
+quantity = 1
+
+[resource]
+script = ExtResource("1_0abjr")
+slot_datas = Array[ExtResource("2_mf74f")]([SubResource("Resource_tjtbo"), SubResource("Resource_wnglo"), SubResource("Resource_yjis8"), null, null, null, null, null, null, null, null, null, null, null, null, null])

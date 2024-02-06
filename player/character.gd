@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody3D
 
-# TODO: Add descriptions for each value
+signal toggle_inventory()
 
 @export_category("Character")
 @export var base_speed : float = 3.0
@@ -19,15 +19,14 @@ class_name Player extends CharacterBody3D
 @export var WEAPON_CAMERA : WeaponCamera
 
 @export_group("Controls")
-# We are using UI controls because they are built into Godot Engine so they can be used right away
 @export var JUMP : String = "jump"
 @export var LEFT : String = "move_left"
 @export var RIGHT : String = "move_right"
 @export var FORWARD : String = "move_forward"
 @export var BACKWARD : String = "move_backward"
 @export var PAUSE : String = "ui_cancel"
-@export var CROUCH : String = "jump"
-@export var SPRINT : String = "crouch"
+@export var CROUCH : String = "crouch"
+@export var SPRINT : String = "sprint"
 
 @export_group("Feature Settings")
 @export var immobile : bool = false
@@ -41,6 +40,11 @@ class_name Player extends CharacterBody3D
 @export var dynamic_fov : bool = true
 @export var continuous_jumping : bool = true
 @export var view_bobbing : bool = true
+
+@export_group("Inventory")
+@export var inventory_data: InventoryData
+@export var armor_inventory_data: InventoryDataArmor
+@export var weapon_inventory_data: InventoryDataWeapon
 
 # Member variables
 var speed : float = base_speed
@@ -61,6 +65,7 @@ func _ready() -> void:
 	
 	# Assign as player
 	Globals.current_player = self
+	InventoryManager.player = self
 	
 	# Connect to EventBus
 	EventBus.give_weapon_to_player.connect(receive_weapon)
@@ -138,40 +143,49 @@ func _process(_delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	if Input.is_action_just_pressed("weapon_next"):
-		WEAPON_MANAGER.equip_weapon(0)
-	
-	if Input.is_action_just_pressed("weapon_prev"):
-		WEAPON_MANAGER.equip_weapon(1)
-	
-	if Input.is_action_pressed("weapon_fire"):
-		WEAPON_MANAGER.fire_weapon()
-	
-	if Input.is_action_just_pressed("weapon_reload"):
-		WEAPON_MANAGER.reload_weapon()
-	
-	if Input.is_action_pressed("weapon_ads"):
-		is_ads = true
-		WEAPON_MANAGER.ads = true
-		reticle_1.hide()
+			
+		
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory.emit()
 	
 	if Input.is_action_just_released("weapon_ads"):
-		is_ads = false
-		WEAPON_MANAGER.ads = false
-		reticle_1.show()
+			is_ads = false
+			WEAPON_MANAGER.ads = false
+			reticle_1.show()
 	
-	if Input.is_action_just_pressed("interact"):
-		interact()
+	# Only do this if the player is controlling character
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if Input.is_action_just_pressed("weapon_next"):
+			WEAPON_MANAGER.equip_weapon(0)
 		
-	if Input.is_action_just_pressed("weapon_drop"):
-		WEAPON_MANAGER.drop_weapon()
+		if Input.is_action_just_pressed("weapon_prev"):
+			WEAPON_MANAGER.equip_weapon(1)
 		
-	if Input.is_action_just_pressed("spawn_enemy"):
-		EventBus.spawn_enemy.emit()
+		if Input.is_action_just_pressed("weapon_reload"):
+			WEAPON_MANAGER.reload_weapon()
+		
+		if Input.is_action_pressed("weapon_ads"):
+			is_ads = true
+			WEAPON_MANAGER.ads = true
+			reticle_1.hide()
+		
+		if Input.is_action_just_pressed("interact"):
+			interact()
+		
+		if Input.is_action_just_pressed("weapon_drop"):
+			WEAPON_MANAGER.drop_weapon()
+			
+		if Input.is_action_just_pressed("spawn_enemy"):
+			EventBus.spawn_enemy.emit()
+		
+		if Input.is_action_pressed("weapon_fire"):
+			WEAPON_MANAGER.fire_weapon()
+
 
 
 func _unhandled_input(event) -> void:
+
+		
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		HEAD.rotation_degrees.y -= event.relative.x * mouse_sensitivity
 		HEAD.rotation_degrees.x -= event.relative.y * mouse_sensitivity
@@ -243,6 +257,12 @@ func headbob_animation(moving) -> void:
 		CAMERA_ANIMATION.speed_scale = speed / base_speed
 	else:
 		CAMERA_ANIMATION.play("RESET")
+
+
+func get_drop_position() -> Vector3:
+	# Get forward facing direction from camera
+	var direction = -CAMERA.global_transform.basis.z
+	return CAMERA.global_position + direction
 
 
 func hit(damage):
